@@ -1,0 +1,34 @@
+=== INVENTARIO TUSZ ===
+Raiz: D:\Dani\TUSZ\v2.0.6
+
+split  pacientes  sesiones  ficheros    horas pac.c/crisis  eventos min.crisis
+train        579      1175      5057    910.7          171     1812     1990.4
+dev           53       342      2203    435.5           37      492      446.3
+eval          43       126       880    128.6           30      360      398.5
+
+Pacientes compartidos entre splits (debe ser 0): train/dev=0, train/eval=0, dev/eval=0
+
+Montajes:  {'02_tcp_le': 573, '03_tcp_ar_a': 1466, '01_tcp_ar': 6101}
+Frecuencias de muestreo (Hz):  {250: 1171, 400: 658, 256: 6071, 1000: 110, 512: 130}
+N. de senales por EDF:  {33: 1274, 32: 1223, 41: 334, 36: 290, 34: 1273, 30: 546, 128: 75, 29: 1040, 28: 219, 31: 571, 20: 431, 27: 644, 17: 3, 18: 82, 35: 6, 26: 7, 25: 13, 21: 109}
+
+--- Tipos de crisis (1 evento = 1 evento del .csv_bi; tipo = etiqueta multiclase dominante) ---
+tipo    train_ev train_pac train_min    dev_ev  dev_pac  dev_min   eval_ev eval_pac eval_min
+absz          47        8      7.4        24        4      5.3        49        1      4.4
+cpsz         258       31    436.7         3        2      1.2        41        3     52.7
+fnsz        1139      101   1121.7       263       22    238.4       153       17    196.7
+gnsz         311       48    352.7       199       25    195.7       108       12    134.0
+mysz           2        1     21.5         0        0      0.0         0        0      0.0
+sin_tipo         1        1      0.0         0        0      0.0         0        0      0.0
+spsz           8        1     10.2         0        0      0.0         0        0      0.0
+tcsz          31        9     34.4         2        1      3.3         8        4     10.1
+tnsz          15        2      5.8         1        1      2.4         1        1      0.7
+
+--- Viabilidad para PREDICCION (lead-in = tiempo sin crisis previo dentro de la sesion) ---
+(aproximacion: se agrupan los tokens t000, t001... de la sesion como consecutivos)
+split   crisis  lead>=30min   pac  lead>=60min   pac
+train     1812           40    29           15    12
+dev        492           34    13           10     7
+eval       360           14    12            3     3
+
+Duracion de fichero: min/mediana/max (s): 1 / 601 / 1800

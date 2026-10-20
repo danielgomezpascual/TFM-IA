@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AAREADME Procesado — TUH EEG Seizure Corpus (TUSZ) v2.0.6</title>
+<style>
+  :root {
+    --bg: #f7f8fa;
+    --card-bg: #ffffff;
+    --text: #1a1d23;
+    --text-muted: #5a6270;
+    --accent: #2a6f6f;
+    --accent-light: #e8f2f2;
+    --border: #e2e5ea;
+    --train: #2a6f6f;
+    --dev: #b8860b;
+    --eval: #a03e4c;
+    --warn-bg: #fff4e5;
+    --warn-border: #e8a33d;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 0 0 60px 0;
+  }
+  header {
+    background: linear-gradient(135deg, #1f4f4f, #2a6f6f);
+    color: white;
+    padding: 48px 24px 40px;
+    text-align: center;
+  }
+  header h1 {
+    margin: 0 0 8px;
+    font-size: 1.9rem;
+    font-weight: 700;
+  }
+  header p {
+    margin: 4px 0;
+    opacity: 0.9;
+    font-size: 1rem;
+  }
+  .badge-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+  }
+  main {
+    max-width: 920px;
+    margin: -28px auto 0;
+    padding: 0 20px;
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 30px;
+    margin-bottom: 22px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  }
+  .card h2 {
+    margin-top: 0;
+    font-size: 1.3rem;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card h2 .icon {
+    font-size: 1.3rem;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 14px;
+    font-size: 0.95rem;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: right;
+    border-bottom: 1px solid var(--border);
+  }
+  th:first-child, td:first-child {
+    text-align: left;
+  }
+  thead th {
+    background: var(--accent-light);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  tbody tr:last-child td {
+    font-weight: 700;
+    border-top: 2px solid var(--accent);
+  }
+  .split-bars {
+    display: flex;
+    height: 34px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 16px;
+    font-size: 0.8rem;
+    color: white;
+    font-weight: 600;
+  }
+  .split-bars div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .split-train { background: var(--train); }
+  .split-dev { background: var(--dev); }
+  .split-eval { background: var(--eval); }
+  .legend {
+    display: flex;
+    gap: 18px;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+  }
+  .legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    display: inline-block;
+  }
+  .warn {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-top: 16px;
+    font-size: 0.92rem;
+  }
+  .warn strong { color: #8a5a10; }
+  .filetype-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 14px;
+    margin-top: 16px;
+  }
+  .filetype {
+    background: var(--accent-light);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .filetype code {
+    background: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: var(--accent);
+  }
+  .filetype p {
+    margin: 8px 0 0;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+  }
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 14px;
+    margin-top: 16px;
+  }
+  .stat {
+    text-align: center;
+    background: var(--accent-light);
+    border-radius: 10px;
+    padding: 16px 10px;
+  }
+  .stat .num {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .stat .label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+  .seizure-bar-wrap {
+    margin-top: 18px;
+  }
+  .seizure-bar {
+    width: 100%;
+    height: 26px;
+    background: var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+  }
+  .seizure-bar-fill {
+    height: 100%;
+    background: var(--eval);
+    width: 3.2%;
+  }
+  .seizure-bar-caption {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-top: 6px;
+  }
+  code.inline {
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+  ol, ul { padding-left: 22px; }
+  li { margin-bottom: 6px; }
+  footer {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    margin-top: 30px;
+    padding: 0 20px;
+  }
+  .next-steps {
+    display: grid;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .step {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: var(--accent-light);
+    border-radius: 10px;
+    padding: 12px 16px;
+  }
+  .step .n {
+    background: var(--accent);
+    color: white;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>TUH EEG Seizure Corpus (TUSZ)</h1>
+  <p>Resumen procesado del archivo AAREADME.txt — versión 2.0.6</p>
+  <div class="badge-row">
+    <span class="badge">81.4 GB</span>
+    <span class="badge">8.140 archivos EDF</span>
+    <span class="badge">675 pacientes</span>
+    <span class="badge">2.664 eventos de crisis</span>
+  </div>
+</header>
+
+<main>
+
+  <div class="card">
+    <h2><span class="icon">📦</span> Visión general</h2>
+    <p>Corpus clínico de EEG desarrollado por Temple University para el desarrollo de algoritmos de detección de crisis epilépticas mediante machine learning. Contiene sesiones con crisis y, para poder medir falsos positivos, también sesiones de control sin crisis.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="num">675</div><div class="label">pacientes totales</div></div>
+      <div class="stat"><div class="num">1.643</div><div class="label">sesiones</div></div>
+      <div class="stat"><div class="num">8.140</div><div class="label">archivos EDF</div></div>
+      <div class="stat"><div class="num">238</div><div class="label">pacientes con crisis</div></div>
+      <div class="stat"><div class="num">2.664</div><div class="label">eventos de crisis</div></div>
+      <div class="stat"><div class="num">81,4 GB</div><div class="label">tamaño total</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="icon">🗂️</span> Estructura train / dev / eval</h2>
+    <p>El corpus se reparte en tres bloques con roles metodológicos distintos y no intercambiables.</p>
+
+    <table>
+      <thead>
+        <tr><th>Métrica</th><th>train</th><th>dev</th><th>eval</th><th>Total</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Archivos EDF</td><td>5.057</td><td>2.203</td><td>880</td><td>8.140</td></tr>
+        <tr><td>Sesiones</td><td>1.175</td><td>342</td><td>126</td><td>1.643</td></tr>
+        <tr><td>Pacientes</td><td>579</td><td>53</td><td>43</td><td>675</td></tr>
+        <tr><td>Pacientes con crisis</td><td>171</td><td>37</td><td>30</td><td>238</td></tr>
+        <tr><td>Sesiones con crisis</td><td>282</td><td>88</td><td>57</td><td>427</td></tr>
+        <tr><td>Eventos de crisis</td><td>1.812</td><td>492</td><td>360</td><td>2.664</td></tr>
+      </tbody>
+    </table>
+
+    <div class="split-bars">
+      <div class="split-train" style="width:62.1%">train 62%</div>
+      <div class="split-dev" style="width:27.1%">dev 27%</div>
+      <div class="split-eval" style="width:10.8%">eval 11%</div>
+    </div>
+    <div class="legend">
+      <span><span class="dot" style="background:var(--train)"></span> train — entrenamiento del modelo</span>
+      <span><span class="dot" style="background:var(--dev)"></span> dev — validación / ajuste de hiperparámetros</span>
+      <span><span class="dot" style="background:var(--eval)"></span> eval — evaluación final ciega</span>
+    </div>
+
+    <div class="warn">
+      <strong>⚠️ Importante para la metodología del TFM:</strong> el bloque <code class="inline">eval</code> es un conjunto ciego. No debe tocarse ni usarse para ajustar el modelo en ningún momento del desarrollo — solo para la evaluación final, una única vez. Usarlo antes contamina los resultados y resta validez al trabajo.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="icon">📄</span> Tipos de archivo por grabación</h2>
+    <div class="filetype-grid">
+      <div class="filetype">
+        <code>.edf</code>
+        <p>Señal EEG en bruto (European Data Format). Aquí está la señal que se carga con <code class="inline">mne</code>.</p>
+      </div>
+      <div class="filetype">
+        <code>.csv</code>
+        <p>Anotaciones por canal, con el <strong>tipo de crisis específico</strong> (multi-clase). Clave para la fase de clasificación de tipos.</p>
+      </div>
+      <div class="filetype">
+        <code>.csv_bi</code>
+        <p>Anotaciones simplificadas a dos clases: <code class="inline">seiz</code> / <code class="inline">bckg</code>. Clave para la fase de predicción binaria.</p>
+      </div>
+    </div>
+    <p style="margin-top:18px;">Los tipos exactos de crisis contemplados están descritos en la hoja de cálculo:</p>
+    <p><code class="inline">$TUSZ/v2.0.3/DOCS/seizures_types_v02.xlsx</code></p>
+  </div>
+
+  <div class="card">
+    <h2><span class="icon">🧠</span> Canales y montaje</h2>
+    <p>Todos los archivos siguen la configuración estándar internacional <strong>10/20</strong> y pueden convertirse al montaje TCP (Temporal Central Parasagittal), que es el que usa internamente el propio corpus. Existen dos tipos de referencia según el archivo: <strong>AR</strong> (average reference) y <strong>LE</strong> (linked ears).</p>
+    <p>El montaje TCP define 22 canales derivados como diferencias entre pares de electrodos, por ejemplo:</p>
+    <table>
+      <thead><tr><th>Canal</th><th>Derivación</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>FP1–F7</td></tr>
+        <tr><td>1</td><td>F7–T3</td></tr>
+        <tr><td>9</td><td>T3–C3</td></tr>
+        <tr><td>14</td><td>FP1–F3</td></tr>
+        <tr><td>18</td><td>FP2–F4</td></tr>
+        <tr><td>21</td><td>P4–O2</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.85rem; color:var(--text-muted);">(lista completa de 22 canales en el AAREADME original)</p>
+  </div>
+
+  <div class="card">
+    <h2><span class="icon">⚖️</span> Desbalance de clases</h2>
+    <p>La duración total de eventos de crisis frente a la duración total del corpus deja ver la magnitud del desbalance que habrá que gestionar en el preprocesado:</p>
+    <div class="seizure-bar-wrap">
+      <div class="seizure-bar">
+        <div class="seizure-bar-fill"></div>
+      </div>
+      <div class="seizure-bar-caption">≈ 47 horas de crisis reales frente a ≈ 1.480 horas de registro total (~3,2%)</div>
+    </div>
+    <p style="margin-top:14px;">Esto confirma que el problema de predicción/detección es de clases muy desbalanceadas — habrá que aplicar técnicas de balanceo (undersampling, class weights, oversampling de ventanas preictal, etc.) antes de entrenar.</p>
+  </div>
+
+  <div class="card">
+    <h2><span class="icon">🧾</span> Metadatos adicionales</h2>
+    <p>Esta versión (2.0.5+) incorpora una hoja de cálculo de metadatos por paciente en <code class="inline">/DOCS</code>, recopilada manualmente a partir de los informes clínicos anonimizados. Útil si en algún momento se quiere enriquecer el análisis con variables clínicas del sujeto (edad, historial, etc.), siempre respetando el anonimato.</p>
+  </div>
+
+  <div class="card">
+    <h2><span class="icon">➡️</span> Próximos pasos sugeridos</h2>
+    <div class="next-steps">
+      <div class="step"><div class="n">1</div><div>Localizar y abrir <code class="inline">seizures_types_v02.xlsx</code> en <code class="inline">/DOCS</code> para ver el listado exacto de tipos de crisis disponibles.</div></div>
+      <div class="step"><div class="n">2</div><div>Cargar un archivo <code class="inline">.edf</code> de ejemplo con <code class="inline">mne</code> y explorar canales, frecuencia de muestreo y duración.</div></div>
+      <div class="step"><div class="n">3</div><div>Cruzar la señal con su <code class="inline">.csv_bi</code> correspondiente para localizar y visualizar una crisis real.</div></div>
+      <div class="step"><div class="n">4</div><div>Diseñar el criterio de ventanas preictal / interictal y el balanceo de clases antes de tocar <code class="inline">train</code> en serio.</div></div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Documento generado a partir de AAREADME.txt — TUH EEG Seizure Corpus v2.0.6 — Temple University / NEDC
+</footer>
+
+</body>
+</html>

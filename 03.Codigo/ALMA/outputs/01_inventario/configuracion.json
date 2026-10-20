@@ -1,0 +1,17 @@
+{
+    "ruta_tusz": "D:\\Dani\\TFM IA\\00.TUSZ\\v2.0.6",
+    "splits": [
+        "train",
+        "dev",
+        "eval"
+    ],
+    "umbrales_leadin_min": [
+        2,
+        5,
+        7,
+        10,
+        15
+    ],
+    "leadin_elegido_min": 5,
+    "fecha": "2026-10-20 16:25"
+}

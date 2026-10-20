@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tipos de crisis TUSZ</title>
+<style>
+  :root {
+    --bg: #fafaf8; --surface: #ffffff; --text: #1f2328; --muted: #656d76; --border: #d8dce0;
+    --head: #eef1f4; --accent: #1f6feb; --warn-bg: #fff4d6; --warn-text: #7a5200; --zero: #a0a7ae;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14171a; --surface: #1b1f23; --text: #e6e8ea; --muted: #9aa3ab; --border: #30363d;
+      --head: #232a31; --accent: #58a6ff; --warn-bg: #3a2f10; --warn-text: #f0c96a; --zero: #5c646c;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 1080px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 1.8rem; margin: 0 0 4px; }
+  h2 { font-size: 1.25rem; margin: 40px 0 10px; }
+  .sub { color: var(--muted); margin: 0 0 8px; }
+  .note { color: var(--muted); font-size: 0.9rem; margin: 8px 0 10px; }
+  code { background: var(--head); padding: 1px 6px; border-radius: 4px; font-size: 0.9em; }
+  .wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.93rem; }
+  th, td { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+  thead th { background: var(--head); font-weight: 600; white-space: nowrap; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: var(--head); }
+  td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td.zero { color: var(--zero); }
+  .code { font-weight: 700; color: var(--accent); font-family: ui-monospace, "Cascadia Code", Consolas, monospace; }
+  .tipo { min-width: 230px; }
+  .tipo .mean { color: var(--muted); font-weight: 400; }
+  .grp th { text-align: center; border-left: 1px solid var(--border); }
+  .grp th:first-child { border-left: none; }
+  td.sep, th.sep { border-left: 1px solid var(--border); }
+  td.nowrap { white-space: nowrap; }
+  ul.obs { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  ul.obs li { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 8px; padding: 10px 14px; }
+  ul.obs li.warn { border-left-color: var(--warn-text); background: var(--warn-bg); color: var(--warn-text); }
+  @media (max-width: 600px) {
+    h1 { font-size: 1.45rem; } table { font-size: 0.85rem; } th, td { padding: 7px 8px; }
+  }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Tipos de crisis (corpus TUSZ)</h1>
+<p class="sub">Cada evento corresponde a una fila del <code>.csv_bi</code>. El tipo es la etiqueta multiclase dominante. Las definiciones proceden del fichero <code>seizures_types_v02.xlsx</code> (30 clases de anotación de TUSZ, códigos 0 a 29); la descripción está traducida al español.</p>
+<h2>Clases de crisis definidas en el modelo (12)</h2>
+<div class="wrap"><table><thead><tr><th>Código</th><th class="n">Nº</th><th>Nombre</th><th>Signos</th><th>Localización</th><th>Descripción</th></tr></thead><tbody>
+<tr><td class="code">SEIZ</td><td class="n">7</td><td>Seizure</td><td class="nowrap">Clínico y electrográfico</td><td class="nowrap">Todas</td><td>Clase común de crisis que puede incluir todos los tipos</td></tr>
+<tr><td class="code">FNSZ</td><td class="n">8</td><td>Focal Non-Specific Seizure</td><td class="nowrap">Electrográfico</td><td class="nowrap">Hemisférica/Focal</td><td>Crisis focales que no pueden especificarse según su tipo</td></tr>
+<tr><td class="code">GNSZ</td><td class="n">9</td><td>Generalized Non-Specific Seizure</td><td class="nowrap">Electrográfico</td><td class="nowrap">Generalizada</td><td>Crisis generalizadas que no pueden clasificarse en ninguno de los grupos siguientes</td></tr>
+<tr><td class="code">SPSZ</td><td class="n">10</td><td>Simple Partial Seizure</td><td class="nowrap">Clínico y electrográfico</td><td class="nowrap">Todas</td><td>Crisis parciales con la conciencia conservada; el tipo se especifica solo por los signos clínicos</td></tr>
+<tr><td class="code">CPSZ</td><td class="n">11</td><td>Complex Partial Seizure</td><td class="nowrap">Clínico y electrográfico</td><td class="nowrap">Todas</td><td>Crisis parciales con pérdida de conciencia; el tipo se especifica solo por los signos clínicos</td></tr>
+<tr><td class="code">ABSZ</td><td class="n">12</td><td>Absence Seizure</td><td class="nowrap">Clínico y electrográfico</td><td class="nowrap">Generalizada</td><td>Descargas de ausencia observadas en el EEG; el paciente pierde la conciencia unos segundos (pequeño mal)</td></tr>
+<tr><td class="code">TNSZ</td><td class="n">13</td><td>Tonic Seizure</td><td class="nowrap">Clínico y electrográfico</td><td class="nowrap">Todas</td><td>Rigidez del cuerpo durante la crisis (el efecto en el EEG desaparece)</td></tr>
+<tr><td class="code">CNSZ</td><td class="n">14</td><td>Clonic Seizure</td><td class="nowrap">Clínico y electrográfico</td><td class="nowrap">Todas</td><td>Sacudidas/temblores del cuerpo durante la crisis</td></tr>
+<tr><td class="code">TCSZ</td><td class="n">15</td><td>Tonic Clonic Seizure</td><td class="nowrap">Clínico y electrográfico</td><td class="nowrap">Todas</td><td>Primero rigidez y después sacudidas del cuerpo (gran mal)</td></tr>
+<tr><td class="code">ATSZ</td><td class="n">16</td><td>Atonic Seizure</td><td class="nowrap">Clínico y electrográfico</td><td class="nowrap">N/A</td><td>Pérdida súbita del tono muscular</td></tr>
+<tr><td class="code">MYSZ</td><td class="n">17</td><td>Myoclonic Seizure</td><td class="nowrap">Clínico y electrográfico</td><td class="nowrap">N/A</td><td>Sacudidas mioclónicas de las extremidades</td></tr>
+<tr><td class="code">NESZ</td><td class="n">18</td><td>Non-Epileptic Seizure</td><td class="nowrap">Clínico y electrográfico</td><td class="nowrap">N/A</td><td>Cualquier crisis no epiléptica observada. No contiene signos electrográficos</td></tr>
+</tbody></table></div>
+<h2>Distribución por partición</h2>
+<p class="note"><code>ev</code> = número de eventos, <code>pac</code> = número de pacientes, <code>min</code> = minutos totales de crisis.</p>
+<div class="wrap"><table><thead><tr class="grp"><th rowspan="2" class="tipo">tipo</th><th colspan="3">train</th><th colspan="3">dev</th><th colspan="3">eval</th></tr><tr><th class="n sep">ev</th><th class="n">pac</th><th class="n">min</th><th class="n sep">ev</th><th class="n">pac</th><th class="n">min</th><th class="n sep">ev</th><th class="n">pac</th><th class="n">min</th></tr></thead><tbody>
+<tr><td class="tipo"><span class="code">absz</span> <span class="mean">· Ausencia</span></td><td class="n sep">47</td><td class="n">8</td><td class="n">7.4</td><td class="n sep">24</td><td class="n">4</td><td class="n">5.3</td><td class="n sep">49</td><td class="n">1</td><td class="n">4.4</td></tr>
+<tr><td class="tipo"><span class="code">cpsz</span> <span class="mean">· Focal con alteración de conciencia (parcial compleja)</span></td><td class="n sep">258</td><td class="n">31</td><td class="n">436.7</td><td class="n sep">3</td><td class="n">2</td><td class="n">1.2</td><td class="n sep">41</td><td class="n">3</td><td class="n">52.7</td></tr>
+<tr><td class="tipo"><span class="code">fnsz</span> <span class="mean">· Focal no especificada</span></td><td class="n sep">1139</td><td class="n">101</td><td class="n">1121.7</td><td class="n sep">263</td><td class="n">22</td><td class="n">238.4</td><td class="n sep">153</td><td class="n">17</td><td class="n">196.7</td></tr>
+<tr><td class="tipo"><span class="code">gnsz</span> <span class="mean">· Generalizada no especificada</span></td><td class="n sep">311</td><td class="n">48</td><td class="n">352.7</td><td class="n sep">199</td><td class="n">25</td><td class="n">195.7</td><td class="n sep">108</td><td class="n">12</td><td class="n">134.0</td></tr>
+<tr><td class="tipo"><span class="code">mysz</span> <span class="mean">· Mioclónica</span></td><td class="n sep">2</td><td class="n">1</td><td class="n">21.5</td><td class="n sep zero">0</td><td class="n zero">0</td><td class="n zero">0.0</td><td class="n sep zero">0</td><td class="n zero">0</td><td class="n zero">0.0</td></tr>
+<tr><td class="tipo"><span class="code">sin_tipo</span> <span class="mean">· Sin tipo asignado (probablemente SEIZ, clase 7)</span></td><td class="n sep">1</td><td class="n">1</td><td class="n">0.0</td><td class="n sep zero">0</td><td class="n zero">0</td><td class="n zero">0.0</td><td class="n sep zero">0</td><td class="n zero">0</td><td class="n zero">0.0</td></tr>
+<tr><td class="tipo"><span class="code">spsz</span> <span class="mean">· Focal con conciencia conservada (parcial simple)</span></td><td class="n sep">8</td><td class="n">1</td><td class="n">10.2</td><td class="n sep zero">0</td><td class="n zero">0</td><td class="n zero">0.0</td><td class="n sep zero">0</td><td class="n zero">0</td><td class="n zero">0.0</td></tr>
+<tr><td class="tipo"><span class="code">tcsz</span> <span class="mean">· Tónico-clónica</span></td><td class="n sep">31</td><td class="n">9</td><td class="n">34.4</td><td class="n sep">2</td><td class="n">1</td><td class="n">3.3</td><td class="n sep">8</td><td class="n">4</td><td class="n">10.1</td></tr>
+<tr><td class="tipo"><span class="code">tnsz</span> <span class="mean">· Tónica</span></td><td class="n sep">15</td><td class="n">2</td><td class="n">5.8</td><td class="n sep">1</td><td class="n">1</td><td class="n">2.4</td><td class="n sep">1</td><td class="n">1</td><td class="n">0.7</td></tr>
+</tbody></table></div>
+<p class="note">Clases de crisis del fichero que no aparecen en esta tabla: <strong>cnsz</strong> (clónica), <strong>atsz</strong> (atónica) y <strong>nesz</strong> (no epiléptica).</p>
+<h2>Duración media por evento (train)</h2>
+<div class="wrap"><table><thead><tr><th class="tipo">tipo</th><th class="n">min/evento</th><th class="n">segundos/evento</th></tr></thead><tbody>
+<tr><td class="tipo"><span class="code">sin_tipo</span> <span class="mean">· Sin tipo asignado (probablemente SEIZ, clase 7)</span></td><td class="n">0.00</td><td class="n">0.0</td></tr>
+<tr><td class="tipo"><span class="code">absz</span> <span class="mean">· Ausencia</span></td><td class="n">0.16</td><td class="n">9.4</td></tr>
+<tr><td class="tipo"><span class="code">tnsz</span> <span class="mean">· Tónica</span></td><td class="n">0.39</td><td class="n">23.2</td></tr>
+<tr><td class="tipo"><span class="code">fnsz</span> <span class="mean">· Focal no especificada</span></td><td class="n">0.98</td><td class="n">59.1</td></tr>
+<tr><td class="tipo"><span class="code">tcsz</span> <span class="mean">· Tónico-clónica</span></td><td class="n">1.11</td><td class="n">66.6</td></tr>
+<tr><td class="tipo"><span class="code">gnsz</span> <span class="mean">· Generalizada no especificada</span></td><td class="n">1.13</td><td class="n">68.0</td></tr>
+<tr><td class="tipo"><span class="code">spsz</span> <span class="mean">· Focal con conciencia conservada (parcial simple)</span></td><td class="n">1.27</td><td class="n">76.5</td></tr>
+<tr><td class="tipo"><span class="code">cpsz</span> <span class="mean">· Focal con alteración de conciencia (parcial compleja)</span></td><td class="n">1.69</td><td class="n">101.6</td></tr>
+<tr><td class="tipo"><span class="code">mysz</span> <span class="mean">· Mioclónica</span></td><td class="n">10.75</td><td class="n">645.0</td></tr>
+</tbody></table></div>
+<h2>Observaciones</h2>
+<ul class="obs">
+  <li><strong>Desbalance fuerte:</strong> fnsz domina (unos 1.100 eventos en train); gnsz y cpsz le siguen a distancia.</li>
+  <li class="warn"><strong>Cobertura de clases:</strong> El fichero define 12 clases de crisis (SEIZ, FNSZ, GNSZ, SPSZ, CPSZ, ABSZ, TNSZ, CNSZ, TCSZ, ATSZ, MYSZ, NESZ), pero en la tabla de eventos solo aparecen 9 etiquetas. No aparecen cnsz (clónica), atsz (atónica) ni nesz (no epiléptica), y sin_tipo es muy probablemente SEIZ (clase 7). Conviene confirmarlo en el script de conversión.</li>
+  <li class="warn"><strong>Clases inutilizables para evaluar:</strong> mysz, spsz y sin_tipo solo aparecen en train, con 1 paciente cada una, y no tienen ejemplos en dev ni en eval. Solo cabe fusionarlas o descartarlas.</li>
+  <li class="warn"><strong>Métricas frágiles:</strong> absz tiene 1 solo paciente en eval; tnsz tiene 1 paciente en dev y 1 en eval; cpsz en dev tiene 3 eventos (2 pacientes). Cualquier métrica por clase ahí depende de muy pocos pacientes.</li>
+  <li><strong>Distribución desigual entre particiones:</strong> cpsz pasa de 258 eventos en train a 3 en dev, y absz de 8 pacientes en train a 1 en eval. Conviene mirar los pacientes además de los eventos.</li>
+  <li><strong>Duración por tipo:</strong> cpsz dura de media unos 1,7 min por evento; absz y tnsz son mucho más breves (unos 9 s y 23 s). Esto afecta a cómo se definen las ventanas.</li>
+  <li><strong>Ojo con mysz:</strong> 2 eventos suman 21,5 min (unos 10,7 min por evento), muy por encima del resto. Puede ser un artefacto de anotación.</li>
+  <li><strong>tnsz y el EEG:</strong> Según el fichero, en la crisis tónica &quot;el efecto en el EEG desaparece&quot;. Para un detector basado en EEG puede ser una clase especialmente difícil.</li>
+  <li><strong>nesz no es detectable por EEG:</strong> El fichero indica que no contiene signos electrográficos, así que, si llegara a aparecer, no tendría sentido como clase de un modelo que solo ve EEG.</li>
+  <li><strong>Localización según el fichero:</strong> Solo fnsz (Hemisférica/Focal), gnsz y absz (Generalizada) tienen localización definida. seiz, spsz, cpsz, tnsz, cnsz y tcsz figuran como &quot;Todas&quot;, y atsz, mysz y nesz como &quot;N/A&quot;. Hay que tenerlo en cuenta si se agrupa en focal vs. generalizada.</li>
+</ul>
+<h2>Anexo: resto de clases del modelo (no son crisis)</h2>
+<div class="wrap"><table><thead><tr><th>Código</th><th class="n">Nº</th><th>Nombre</th><th>Signos</th><th>Localización</th><th>Descripción</th></tr></thead><tbody>
+<tr><td class="code">NULL</td><td class="n">0</td><td>No Event</td><td class="nowrap">N/A</td><td class="nowrap">N/A</td><td>Evento sin clasificar</td></tr>
+<tr><td class="code">SPSW</td><td class="n">1</td><td>Spike/Sharp and Wave</td><td class="nowrap">Electrográfico</td><td class="nowrap">Todas</td><td>Complejos de punta y onda, complejos de onda aguda y onda</td></tr>
+<tr><td class="code">GPED</td><td class="n">2</td><td>Generalized Periodic Epileptiform Discharges</td><td class="nowrap">Electrográfico</td><td class="nowrap">Generalizada</td><td>Descargas periódicas difusas</td></tr>
+<tr><td class="code">PLED</td><td class="n">3</td><td>Periodic Lateralized Epileptiform Discharges</td><td class="nowrap">Electrográfico</td><td class="nowrap">Hemisférica/Focal</td><td>Descargas periódicas focales</td></tr>
+<tr><td class="code">EYBL</td><td class="n">4</td><td>Eye blink</td><td class="nowrap">Clínico y electrográfico</td><td class="nowrap">Focal</td><td>Tipo específico de artefacto de movimiento ocular, agudo y de alta amplitud, correspondiente a parpadeos</td></tr>
+<tr><td class="code">ARTF</td><td class="n">5</td><td>Artifacts (All)</td><td class="nowrap">Clínico y electrográfico</td><td class="nowrap">Todas</td><td>Cualquier señal eléctrica que no procede del cerebro, como las debidas al equipo o a factores ambientales</td></tr>
+<tr><td class="code">BCKG</td><td class="n">6</td><td>Background</td><td class="nowrap">Electrográfico</td><td class="nowrap">N/A</td><td>Eventos basales / sin interés</td></tr>
+<tr><td class="code">INTR</td><td class="n">19</td><td>Interesting Patterns</td><td class="nowrap">Electrográfico</td><td class="nowrap">Todas</td><td>Cualquier patrón inusual o interesante observado que no encaja en las clases anteriores</td></tr>
+<tr><td class="code">SLOW</td><td class="n">20</td><td>Slowing</td><td class="nowrap">Electrográfico</td><td class="nowrap">Todas</td><td>Disminución breve de la frecuencia</td></tr>
+<tr><td class="code">EYEM</td><td class="n">21</td><td>Eye Movement Artifact</td><td class="nowrap">Clínico y electrográfico</td><td class="nowrap">Focal</td><td>Artefacto frontal/prefrontal muy común que aparece al mover los ojos</td></tr>
+<tr><td class="code">CHEW</td><td class="n">22</td><td>Chewing Artifact</td><td class="nowrap">Clínico y electrográfico</td><td class="nowrap">Todas</td><td>Artefacto específico que afecta a varios canales y corresponde a la masticación del paciente, en ráfagas</td></tr>
+<tr><td class="code">SHIV</td><td class="n">23</td><td>Shivering Artifact</td><td class="nowrap">Clínico y electrográfico</td><td class="nowrap">Todas</td><td>Artefacto específico, agudo y sostenido, que corresponde a temblores (escalofríos) del paciente</td></tr>
+<tr><td class="code">MUSC</td><td class="n">24</td><td>Muscle Artifact</td><td class="nowrap">Clínico y electrográfico</td><td class="nowrap">Todas</td><td>Artefacto muy común, agudo y de alta frecuencia, que corresponde a agitación/nerviosismo del paciente</td></tr>
+<tr><td class="code">ELPP</td><td class="n">25</td><td>Electrode Pop Artifact</td><td class="nowrap">Clínico y electrográfico</td><td class="nowrap">Focal</td><td>Artefacto breve caracterizado por canales que usan el mismo electrodo con picos de simetría perfecta</td></tr>
+<tr><td class="code">ELST</td><td class="n">26</td><td>Electrostatic Artifact</td><td class="nowrap">Clínico y electrográfico</td><td class="nowrap">Todas</td><td>Artefacto causado por movimiento o interferencias en los electrodos, con morfologías variadas</td></tr>
+<tr><td class="code">CALB</td><td class="n">27</td><td>Calibration Artifact</td><td class="nowrap">Clínico y electrográfico</td><td class="nowrap">Todas</td><td>Artefacto causado por la calibración de los electrodos. Aparece como un aplanamiento de la señal al inicio de los archivos</td></tr>
+<tr><td class="code">HPHS</td><td class="n">28</td><td>Hypnagogic Hypersynchrony</td><td class="nowrap">Electrográfico</td><td class="nowrap">Generalizada</td><td>Breve periodo de ondas lentas de alta amplitud</td></tr>
+<tr><td class="code">TRIP</td><td class="n">29</td><td>Triphasic Wave</td><td class="nowrap">Electrográfico</td><td class="nowrap">Generalizada</td><td>Ondas grandes de tres fases, frecuentemente causadas por una condición metabólica subyacente</td></tr>
+</tbody></table></div>
+
+</main>
+</body>
+</html>
