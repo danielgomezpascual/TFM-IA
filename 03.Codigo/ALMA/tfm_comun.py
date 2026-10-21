@@ -6,6 +6,8 @@ de las figuras) para que sea la misma en todo el proyecto. Si se cambia un
 icono o un color, se cambia solo aquí.
 """
 
+from matplotlib import ticker
+
 SPLITS = ['train', 'dev', 'eval']
 
 # Iconos de las etiquetas de TUSZ
@@ -47,3 +49,19 @@ def tabla_con_iconos(df):
     """Copia de una tabla de pandas con iconos en filas y columnas.
     Solo para mostrar: los CSV se guardan sin iconos."""
     return df.rename(index=con_icono, columns=con_icono)
+
+
+def _numero_legible(valor, _posicion=None):
+    """Número en formato español: 1000 -> '1.000', 0.5 -> '0,5'."""
+    if valor >= 1:
+        return f'{valor:,.0f}'.replace(',', '.')
+    return f'{valor:g}'.replace('.', ',')
+
+
+def eje_log_legible(ax, eje='y'):
+    """En un eje con escala logarítmica, muestra números normales
+    (1, 2, 5, 10, 20, 50, 100, 1.000...) en vez de potencias de 10 (10², 10³)."""
+    eje_mpl = ax.yaxis if eje == 'y' else ax.xaxis
+    eje_mpl.set_major_locator(ticker.LogLocator(base=10, subs=(1, 2, 5)))
+    eje_mpl.set_major_formatter(ticker.FuncFormatter(_numero_legible))
+    eje_mpl.set_minor_formatter(ticker.NullFormatter())

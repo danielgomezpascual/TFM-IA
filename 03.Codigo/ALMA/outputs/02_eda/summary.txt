@@ -1,6 +1,6 @@
-=== INVENTARIO TUSZ ===
+=== EDA TUSZ ===
 Dataset: D:\Dani\TFM IA\00.TUSZ\v2.0.6
-Generado: 2026-10-20 16:25
+Inventario: 2026-10-21 12:40 | EDA: 2026-10-21 13:00
 
 --- Resumen por split ---
          pacientes  sesiones  ficheros  horas  pac. con crisis  crisis  min. en crisis

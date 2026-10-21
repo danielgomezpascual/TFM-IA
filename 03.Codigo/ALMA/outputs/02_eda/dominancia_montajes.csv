@@ -1,0 +1,4 @@
+montage,train,dev,eval,todas
+01_tcp_ar,67.5,84.8,93.3,75.0
+03_tcp_ar_a,22.2,12.9,6.7,18.0
+02_tcp_le,10.3,2.3,0.0,7.0

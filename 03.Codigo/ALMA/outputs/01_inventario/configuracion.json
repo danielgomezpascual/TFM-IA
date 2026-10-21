@@ -5,13 +5,6 @@
         "dev",
         "eval"
     ],
-    "umbrales_leadin_min": [
-        2,
-        5,
-        7,
-        10,
-        15
-    ],
-    "leadin_elegido_min": 5,
-    "fecha": "2026-10-20 16:25"
+    "ejemplo": "aaaaabqv_s001_t000",
+    "fecha": "2026-10-21 12:40"
 }
