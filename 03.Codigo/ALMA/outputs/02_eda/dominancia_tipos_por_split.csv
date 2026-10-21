@@ -1,0 +1,12 @@
+,% crisis,% crisis,% crisis,% crisis,pacientes,pacientes,pacientes,pacientes
+split,train,dev,eval,todas,train,dev,eval,todas
+tipo,,,,,,,,
+fnsz,62.9,53.5,42.5,58.4,101,22,17,140
+gnsz,17.2,40.4,30.0,23.2,48,25,12,85
+cpsz,14.2,0.6,11.4,11.3,31,2,3,36
+absz,2.6,4.9,13.6,4.5,8,4,1,13
+tcsz,1.7,0.4,2.2,1.5,9,1,4,14
+tnsz,0.8,0.2,0.3,0.6,2,1,1,4
+spsz,0.4,0.0,0.0,0.3,1,0,0,1
+mysz,0.1,0.0,0.0,0.1,1,0,0,1
+sin_tipo,0.1,0.0,0.0,0.0,1,0,0,1
