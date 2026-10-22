@@ -1,0 +1,47 @@
+{
+    "tipo_crisis": "cpsz",
+    "leadin_elegido_min": 5,
+    "ventana_preictal_min": 4,
+    "margen_min": 1,
+    "filtro_hz": [
+        0.5,
+        40
+    ],
+    "notch_hz": 60,
+    "filtro_trazado_hz": [
+        1,
+        30
+    ],
+    "bandas_hz": {
+        "delta": [
+            0.5,
+            4
+        ],
+        "theta": [
+            4,
+            8
+        ],
+        "alfa": [
+            8,
+            13
+        ],
+        "beta": [
+            13,
+            30
+        ],
+        "gamma": [
+            30,
+            45
+        ]
+    },
+    "versiones": {
+        "Python": "3.14.0",
+        "numpy": "2.5.4",
+        "pandas": "3.0.6",
+        "matplotlib": "3.11.2",
+        "scipy": "1.18.1",
+        "mne": "1.13.2"
+    },
+    "fecha": "2026-10-23 01:17",
+    "ejemplo": "aaaaamtj_s001_t000"
+}

@@ -1,0 +1,12 @@
+{
+    "inventario": "D:\\Dani\\TFM IA\\03.Codigo\\ALMA\\outputs\\fase_01\\01_inventario",
+    "umbrales_leadin_min": [
+        2,
+        5,
+        7,
+        10,
+        15
+    ],
+    "leadin_elegido_min": 5,
+    "fecha": "2026-10-23 01:14"
+}
