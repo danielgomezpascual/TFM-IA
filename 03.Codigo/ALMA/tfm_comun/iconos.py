@@ -34,10 +34,10 @@ ICONO_TIPO_CANAL = {
     'misc': '❔',  # otros
 }
 
-# Iconos de las regiones de la cabeza: corazones del mismo color que en las figuras
+# Iconos de las regiones de la cabeza: cuadrados del mismo color que en las figuras
 ICONO_REGION = {
-    'frontopolar': '💜', 'frontal': '💙', 'central': '💚', 'temporal': '🧡',
-    'parietal': '💛', 'occipital': '❤️', 'auricular': '🤎',
+    'frontopolar': '🟪', 'frontal': '🟦', 'central': '🟩', 'temporal': '🟧',
+    'parietal': '🟨', 'occipital': '🟥', 'auricular': '🟫',
 }
 
 _ICONO_TEXTO = {**ICONO_ETIQUETA, **ICONO_TIPO_CANAL, **ICONO_REGION}
@@ -45,7 +45,7 @@ _ICONO_TEXTO = {**ICONO_ETIQUETA, **ICONO_TIPO_CANAL, **ICONO_REGION}
 
 def con_icono(texto):
     """Añade el icono a una etiqueta ('absz' -> '🟩 absz'), a un tipo de canal
-    ('eeg' -> '🧠 eeg'), a una región ('temporal' -> '🧡 temporal') o a un texto
+    ('eeg' -> '🧠 eeg'), a una región ('temporal' -> '🟧 temporal') o a un texto
     que empiece por una partición ('dev crisis' -> '🟡 dev crisis')."""
     texto = str(texto)
     if texto in _ICONO_TEXTO:

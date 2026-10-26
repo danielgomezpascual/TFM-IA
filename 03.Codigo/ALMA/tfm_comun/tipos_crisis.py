@@ -10,6 +10,8 @@ No descritos: 🔳 mysz (mioclónica), porque no tiene ninguna crisis en train c
 (solo 2, de un mismo paciente), y cnsz/atsz, que no aparecen en TUSZ v2.0.6.
 """
 
+import unicodedata
+
 TIPOS_CRISIS = {
     'absz': {
         'nombre': 'de ausencia',
@@ -199,3 +201,11 @@ def info_tipo(tipo):
     assert tipo in TIPOS_CRISIS, (f'El tipo {tipo!r} no está descrito en tfm_comun/tipos_crisis.py. '
                                   f'Descritos: {list(TIPOS_CRISIS)}')
     return TIPOS_CRISIS[tipo]
+
+
+def nombre_para_fichero(tipo):
+    """Nombre del tipo apto para un nombre de fichero: 'de ausencia' -> 'ausencia',
+    'tónico-clónica' -> 'tonico_clonica', 'focal no específica' -> 'focal_no_especifica'."""
+    nombre = info_tipo(tipo)['nombre'].removeprefix('de ')
+    nombre = unicodedata.normalize('NFKD', nombre).encode('ascii', 'ignore').decode()
+    return nombre.replace('-', '_').replace(' ', '_')

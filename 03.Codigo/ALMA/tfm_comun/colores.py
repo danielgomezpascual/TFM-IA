@@ -24,11 +24,14 @@ COLORES_PERIODO = {'interictal': 'tab:gray', 'preictal': 'tab:cyan', 'margen': '
 COLORES_TIPO_CANAL = {'eeg': 'tab:pink', 'ecg': 'tab:red', 'eog': 'tab:cyan', 'emg': 'tab:orange',
                       'stim': 'gold', 'resp': 'tab:blue', 'misc': 'tab:gray'}
 
-# Regiones de la cabeza, a juego con sus corazones (💜 frontopolar, 💙 frontal...)
+# Regiones de la cabeza, a juego con sus cuadrados (🟪 frontopolar, 🟦 frontal...)
 COLORES_REGION = {
     'frontopolar': 'tab:purple', 'frontal': 'tab:blue', 'central': 'tab:green',
     'temporal': 'tab:orange', 'parietal': 'gold', 'occipital': 'tab:red', 'auricular': 'tab:brown',
 }
+
+# Lado de la cabeza (tipo de línea): distingue electrodos de la misma región (FP1 frente a FP2)
+ESTILOS_LADO = {'izquierdo': '-', 'derecho': '--', 'línea media': ':'}
 
 # Bandas de frecuencia: de la más lenta (morado oscuro) a la más rápida (amarillo)
 COLORES_BANDA = {'delta': '#2a0593', 'theta': '#8f0da4', 'alfa': '#d04d73',

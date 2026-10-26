@@ -110,3 +110,11 @@ def descripcion_canal(nombre):
     if nombre.startswith('DC'):
         return 'entrada de corriente continua del equipo (sin uso)'
     return 'desconocido'
+
+
+def lado_electrodo(nombre):
+    """Lado de la cabeza de un electrodo 10-20: número impar -> 'izquierdo' (FP1, C3),
+    par -> 'derecho' (FP2, C4), 'Z' -> 'línea media' (FZ, CZ). A1 es izquierdo y A2 derecho."""
+    if nombre.endswith('Z'):
+        return 'línea media'
+    return 'izquierdo' if int(nombre[-1]) % 2 else 'derecho'
