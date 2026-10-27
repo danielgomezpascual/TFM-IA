@@ -1,0 +1,113 @@
+=== Selección de crisis y tramos (Fase 2 · 01) ===
+Inventario: 2026-10-27 16:51 · selección: 2026-10-27 17:03
+Umbrales que se comparan: [2, 3, 4, 5, 7, 10, 15] min · modelo general: 4 min con SPH de 1 min
+Interictal a más de 15 min antes de una crisis · tramo mínimo 60 s
+Crisis descartadas: 2 (anómalas o de menos de 2 s)
+Test común: 115 crisis de 🟢 eval de 28 pacientes
+Tramos guardados en tramos.csv: 7.665
+
+--- Parámetros por tipo (umbrales.py y tipos_crisis.py) ---
+             margen postictal (s)  umbral lead-in (s)  SPH (s)  preictal máx. (s)           grupo
+tipo                                                                                             
+🟩 absz (🔹)                      0                  60       10                 50      🔹 ausencia
+🟧 cpsz (♦️)                   300                 240       60                180        ♦️ focal
+🟥 fnsz (♦️)                   300                 240       60                180        ♦️ focal
+🟦 gnsz (🔷)                    300                 240       60                180  🔷 generalizada
+🔳 mysz (🔷)                    300                 240       60                180  🔷 generalizada
+⬛ sin_tipo                    300                 240       60                180               —
+🟫 spsz (♦️)                   300                 240       60                180        ♦️ focal
+🟪 tcsz (🔷)                    300                 240       60                180  🔷 generalizada
+🟨 tnsz (🔷)                    300                 240       60                180  🔷 generalizada
+
+--- Coste del margen postictal: crisis que superan cada umbral ---
+split                🔵 train                                                     🟡 dev                                                    🟢 eval                                                  
+umbral               ≥ 2 min ≥ 3 min ≥ 4 min ≥ 5 min ≥ 7 min ≥ 10 min ≥ 15 min ≥ 2 min ≥ 3 min ≥ 4 min ≥ 5 min ≥ 7 min ≥ 10 min ≥ 15 min ≥ 2 min ≥ 3 min ≥ 4 min ≥ 5 min ≥ 7 min ≥ 10 min ≥ 15 min
+sin margen postictal     534     397     332     230      97       35        8     278     229     194     160      98       46       19     169     131     115      89      33        8        4
+con margen postictal     364     300     264     181      66       25        6     197     156     133     110      61       32       17     115     104      98      80      31        6        2
+
+--- Crisis que superan cada umbral (lead-in útil) ---
+split        🔵 train                           🟡 dev                            🟢 eval                       
+umbral (min)       2    3    4    5   7  10 15     2    3    4    5   7  10  15      2    3   4   5   7 10 15
+tipo                                                                                                         
+🟥 fnsz (♦️)      218  181  162  113  36  17  3   131  106   88   73  41  24  12     52   45  43  35  14  3  1
+🟦 gnsz (🔷)        74   62   57   34  18   2  0    47   39   37   30  14   6   5     25   22  19  16   8  2  0
+🟧 cpsz (♦️)       39   30   25   17   7   3  3     3    2    2    2   1   0   0     28   28  27  21   8  1  1
+🟩 absz (🔹)        20   16    9    6   3   1  0    13    6    3    2   2   2   0      2    1   1   0   0  0  0
+🟪 tcsz (🔷)         4    3    3    3   1   1  0     2    2    2    2   2   0   0      7    7   7   7   0  0  0
+🟨 tnsz (🔷)         7    6    6    6   1   1  0     1    1    1    1   1   0   0      1    1   1   1   1  0  0
+🟫 spsz (♦️)        2    2    2    2   0   0  0     0    0    0    0   0   0   0      0    0   0   0   0  0  0
+total            364  300  264  181  66  25  6   197  156  133  110  61  32  17    115  104  98  80  31  6  2
+
+--- Pacientes con al menos una crisis que supera cada umbral ---
+split        🔵 train                         🟡 dev                        🟢 eval                      
+umbral (min)       2    3   4   5   7  10 15     2   3   4   5   7  10 15      2   3   4   5   7 10 15
+tipo                                                                                                  
+🟥 fnsz (♦️)       67   60  57  53  31  16  3    19  19  17  16  12   8  3     15  14  14  14  10  3  1
+🟦 gnsz (🔷)        28   25  23  19  10   2  0    18  16  15  13   7   4  4     10  10  10   9   3  2  0
+🟧 cpsz (♦️)       19   16  14  12   7   3  3     2   1   1   1   1   0  0      3   3   3   3   3  1  1
+🟩 absz (🔹)         7    6   5   3   2   1  0     4   3   2   2   2   2  0      1   1   1   0   0  0  0
+🟪 tcsz (🔷)         4    3   3   3   1   1  0     1   1   1   1   1   0  0      3   3   3   3   0  0  0
+🟨 tnsz (🔷)         2    2   2   2   1   1  0     1   1   1   1   1   0  0      1   1   1   1   1  0  0
+🟫 spsz (♦️)        1    1   1   1   0   0  0     0   0   0   0   0   0  0      0   0   0   0   0  0  0
+total            114  102  94  83  49  24  6    34  31  28  26  21  13  6     28  27  27  25  16  5  2
+
+--- Con los parámetros de cada tipo ---
+                 parámetros                                         🔵 train            🟡 dev           🟢 eval            validación cruzada
+                      grupo umbral (s) SPH (s) margen postictal (s)  crisis pacientes crisis pacientes crisis pacientes pacientes train+dev
+🟥 fnsz (♦️)        ♦️ focal        240      60                  300     162        57     88        17     43        14                  74
+🟦 gnsz (🔷)   🔷 generalizada        240      60                  300      57        23     37        15     19        10                  38
+🟩 absz (🔹)       🔹 ausencia         60      10                    0      30         8     22         4      2         1                  12
+🟧 cpsz (♦️)        ♦️ focal        240      60                  300      25        14      2         1     27         3                  15
+🟨 tnsz (🔷)   🔷 generalizada        240      60                  300       6         2      1         1      1         1                   3
+🟪 tcsz (🔷)   🔷 generalizada        240      60                  300       3         3      2         1      7         3                   4
+🟫 spsz (♦️)        ♦️ focal        240      60                  300       2         1      0         0      0         0                   1
+🔳 mysz (🔷)   🔷 generalizada        240      60                  300       0         0      0         0      0         0                   0
+
+--- Por grupo de inicio (modelos de grupo de la Fase 3) ---
+                                       🔵 train            🟡 dev           🟢 eval            validación cruzada
+                                 tipos  crisis pacientes crisis pacientes crisis pacientes pacientes train+dev
+♦️ focal              cpsz, fnsz, spsz     189        70     90        18     70        16                  88
+🔷 generalizada  gnsz, mysz, tcsz, tnsz      66        28     40        15     27        12                  43
+🔹 ausencia                        absz      30         8     22         4      2         1                  12
+
+--- Interictal por fuente ---
+                            tramos  horas  pacientes
+split   origen                                      
+🔵 train fichero_sin_crisis    2122  371.5        133
+        lejos_de_crisis        152   13.3         94
+🟡 dev   fichero_sin_crisis    1405  327.8         34
+        lejos_de_crisis         80   10.0         25
+🟢 eval  fichero_sin_crisis     510   67.0         29
+        lejos_de_crisis         39    3.6         21
+
+--- Horas por clase (modelo general) ---
+                    pacientes  crisis  horas preictal  horas interictal  interictal / preictal
+umbral_min split                                                                              
+2          🔵 train        114     364             6.1             273.4                     45
+           🟡 dev           34     197             3.3             334.6                    102
+           🟢 eval          28     115             1.9              68.8                     36
+3          🔵 train        102     300            10.0             256.6                     26
+           🟡 dev           31     156             5.2             331.7                     64
+           🟢 eval          27     104             3.5              66.1                     19
+4          🔵 train         94     264            13.2             242.3                     18
+           🟡 dev           28     133             6.7             331.5                     50
+           🟢 eval          27      98             4.9              66.1                     13
+5          🔵 train         83     181            12.1             232.1                     19
+           🟡 dev           26     110             7.3             328.4                     45
+           🟢 eval          25      80             5.3              64.5                     12
+7          🔵 train         49      66             6.6             130.8                     20
+           🟡 dev           21      61             6.1             263.5                     43
+           🟢 eval          16      31             3.1              37.2                     12
+10         🔵 train         24      25             3.8              25.0                      7
+           🟡 dev           13      32             4.8             176.9                     37
+           🟢 eval           5       6             0.9              15.3                     17
+15         🔵 train          6       6             1.4               5.1                      4
+           🟡 dev            6      17             4.0             129.6                     33
+           🟢 eval           2       2             0.5               6.2                     13
+
+--- Tramos por clase y partición ---
+split       🔵 train  🟡 dev  🟢 eval
+clase                             
+ictal          1810    492     360
+interictal     2274   1485     549
+preictal        374    206     115

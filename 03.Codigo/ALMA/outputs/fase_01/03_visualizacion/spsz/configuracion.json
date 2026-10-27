@@ -1,8 +1,9 @@
 {
     "tipo_crisis": "spsz",
-    "leadin_elegido_min": 5,
-    "ventana_preictal_min": 4,
-    "margen_min": 1,
+    "umbral_leadin_s": 240,
+    "sph_s": 60,
+    "ventana_preictal_s": 180,
+    "margen_postictal_s": 300,
     "filtro_hz": [
         0.5,
         40
@@ -42,6 +43,6 @@
         "scipy": "1.18.1",
         "mne": "1.13.2"
     },
-    "fecha": "2026-10-26 10:42",
+    "fecha": "2026-10-27 16:57",
     "ejemplo": "aaaaampz_s004_t002"
 }

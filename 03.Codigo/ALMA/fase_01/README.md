@@ -57,18 +57,16 @@
 |---|---|---|---|---|
 | 1️⃣ | `01_inventario_tusz.ipynb` | Recorre los 8.140 EDF: cabeceras, montaje, frecuencia, duración y crisis (`.csv` + `.csv_bi`). Calcula el **lead-in** de cada crisis | `00.TUSZ/` | `outputs/fase_01/01_inventario/` |
 | 2️⃣ | `02_eda_tusz.ipynb` | Tablas resumen, dominancias, recuento por **umbral de lead-in**, figuras y conclusiones | `01_inventario/` | `outputs/fase_01/02_eda/` |
-| 3️⃣ | `03_ejecutar_visualizaciones.ipynb` | **Lanzador**: ejecuta el `03v` para 🟩 `absz` 🟥 `fnsz` 🟦 `gnsz` 🟧 `cpsz` 🟪 `tcsz` 🟨 `tnsz` 🟫 `spsz` | `03v` | una carpeta por tipo |
-| 🔬 | `03v_visualizacion_crisis.ipynb` | Abre la **señal EEG** de una crisis real (🔵 train, lead-in ≥ 5 min): montaje TCP, filtrado, espectro, espectrograma, bandas y conclusiones | EDF + inventario | `03_visualizacion/<tipo>/` |
+| 3️⃣ | `03_ejecutar_visualizaciones.ipynb` | **Lanzador**: ejecuta el `03v` para 🟩 `absz` (🔹) 🟥 `fnsz` (♦️) 🟦 `gnsz` (🔷) 🟧 `cpsz` (♦️) 🟪 `tcsz` (🔷) 🟨 `tnsz` (🔷) 🟫 `spsz` (♦️) | `03v` | una carpeta por tipo |
+| 🔬 | `03v_visualizacion_crisis.ipynb` | Abre la **señal EEG** de una crisis real (🔵 train, lead-in útil ≥ el umbral de su tipo): montaje TCP, filtrado, espectro, espectrograma, bandas y conclusiones | EDF + inventario | `03_visualizacion/<tipo>/` |
 
-> 🔳 `mysz` queda fuera de la visualización: solo 2 crisis, del mismo paciente y sin lead-in ≥ 5 min.
+> 🔳 `mysz` (🔷) queda fuera de la visualización: solo 2 crisis, del mismo paciente y sin lead-in suficiente.
 
 ### Qué recorre el `03v`, paso a paso
 
-```
-EDF ──► canales ──► anotaciones ──► montaje TCP 22 ──► filtro ──► mapa del fichero
-                                                                       │
-   conclusiones ◄── bandas ◄── espectrograma ◄── espectro (Welch) ◄── 22 canales en la crisis
-```
+<div align="center">
+<img src="img/flujo_03v.png" width="95%" alt="Pasos del notebook 03v">
+</div>
 
 ---
 
@@ -88,8 +86,8 @@ EDF ──► canales ──► anotaciones ──► montaje TCP 22 ──► f
 <img src="../outputs/fase_01/02_eda/figuras/crisis_y_pacientes_por_tipo.png" width="80%" alt="Crisis y pacientes por tipo">
 </div>
 
-- 🟥 `fnsz` + 🟦 `gnsz` + 🟧 `cpsz` = **93 %** de las crisis.
-- 🟩 `absz`: muy cortas (mediana **7 s**) y las 49 de 🟢 eval son de **un solo paciente**.
+- 🟥 `fnsz` (♦️) + 🟦 `gnsz` (🔷) + 🟧 `cpsz` (♦️) = **93 %** de las crisis.
+- 🟩 `absz` (🔹): muy cortas (mediana **7 s**) y las 49 de 🟢 eval son de **un solo paciente**.
 
 ### 2. Cuántas crisis sirven para predecir: el lead-in
 
@@ -103,7 +101,9 @@ El **lead-in** es el tiempo **sin crisis** antes de cada crisis, dentro de su fi
 <img src="img/embudo_leadin.png" width="80%" alt="Embudo de crisis según lead-in">
 </div>
 
-⭐ **5 min** (4 min preictal + 1 min de margen/SPH) es el último umbral antes de que 🟢 eval se quede con muy pocos pacientes.
+⭐ El umbral de lead-in del TFM es **4 min** (3 min de preictal + 1 min de SPH): es el que más señal preictal da en train dejando al menos 20 pacientes en dev y en eval.
+
+**Lead-in útil.** Al lead-in se le descuenta el **margen postictal** de la crisis anterior (*lead-in útil*), y el margen, el umbral de lead-in y el SPH dependen del **tipo de crisis**. Se definen en `tfm_comun/umbrales.py`, en segundos: por defecto, 5 min de margen, **4 min de umbral** y 1 min de SPH; en las 🟩 ausencias, 0 s, 60 s y 10 s, porque son cortas, muy seguidas y casi sin postictal. El recuento con estos valores, y el análisis que llevó a elegir 4 min, están en `fase_02/01_seleccion_crisis.ipynb`.
 
 ### 3. Una crisis real, vista por dentro
 

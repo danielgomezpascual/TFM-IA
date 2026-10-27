@@ -1,16 +1,28 @@
 """
-Información clínica de cada tipo de crisis, para los textos y las figuras de los notebooks.
+Información clínica de cada tipo de crisis (para los textos y las figuras de los notebooks) y su
+grupo de inicio.
 
 Motivo para cambiar: que se añada un tipo de crisis o cambie lo que se sabe de él.
 Los números entre corchetes [n] son las referencias de la bibliografía de los notebooks.
 Para añadir un tipo nuevo basta con añadir su entrada a TIPOS_CRISIS.
 'rango_tipico_hz' es None cuando el tipo no tiene una frecuencia característica única.
 
-No descritos: 🔳 mysz (mioclónica), porque no tiene ninguna crisis en train con lead-in >= 5 min
+'grupo': grupo de inicio según la ILAE (Liga Internacional contra la Epilepsia, 2017): 'focal' (fnsz,
+cpsz, spsz), 'generalizada' (gnsz, tcsz, tnsz) o 'ausencia' (absz, que es generalizada pero va aparte
+por sus parámetros y su señal). Lo usan los modelos de predicción por grupo de la Fase 3: el modelo
+principal es el general, con todas las crisis; los grupos son experimentos para ver si separar mejora.
+
+Los umbrales de predicción (lead-in, SPH, margen postictal) NO están aquí: están en umbrales.py.
+
+No descritos: 🔳 mysz (mioclónica), porque no tiene ninguna crisis en train con lead-in suficiente
 (solo 2, de un mismo paciente), y cnsz/atsz, que no aparecen en TUSZ v2.0.6.
 """
 
 import unicodedata
+
+# Grupos de inicio (ILAE) y grupo de los tipos sin ficha
+GRUPOS = ['focal', 'generalizada', 'ausencia']
+GRUPO_TIPOS_SIN_FICHA = {'mysz': 'generalizada'}   # la mioclónica suele ser generalizada; sin_tipo no tiene grupo
 
 TIPOS_CRISIS = {
     'absz': {
@@ -39,6 +51,7 @@ TIPOS_CRISIS = {
             'de la crisis [10]. El origen es una oscilación del circuito tálamo-cortical [12, 13]. Para un '
             'modelo de **detección**, una firma tan regular es fácil de aprender.'),
         'filtro_trazado_hz': (1, 20),   # la punta-onda y sus armónicos caben de sobra
+        'grupo': 'ausencia',   # generalizada no motora, pero aparte: parámetros y señal muy distintos
     },
     'tnsz': {
         'nombre': 'tónica',
@@ -69,6 +82,7 @@ TIPOS_CRISIS = {
             'Para un modelo, las crisis tónicas son más difíciles que las ausencias: hay pocas (15 en train, '
             'casi todas de un mismo paciente) y el artefacto muscular se parece a la propia crisis.'),
         'filtro_trazado_hz': (1, 30),   # deja ver la actividad rápida, a costa de algo más de músculo
+        'grupo': 'generalizada',   # empieza a la vez en los dos hemisferios
     },
     'fnsz': {
         'nombre': 'focal no específica',
@@ -96,6 +110,7 @@ TIPOS_CRISIS = {
             'TUSZ con mucha diferencia, así que dominará el entrenamiento. Para un modelo es un reto porque cada '
             'paciente tiene su foco: la firma cambia de canales y de forma entre pacientes.'),
         'filtro_trazado_hz': (1, 30),
+        'grupo': 'focal',   # empieza en una zona de un hemisferio
     },
     'gnsz': {
         'nombre': 'generalizada no específica',
@@ -119,6 +134,7 @@ TIPOS_CRISIS = {
             'con la información disponible [9]. Para un modelo de clasificación, gnsz puede confundirse con los '
             'tipos generalizados concretos (absz, tnsz, tcsz).'),
         'filtro_trazado_hz': (1, 30),
+        'grupo': 'generalizada',   # empieza a la vez en los dos hemisferios
     },
     'cpsz': {
         'nombre': 'parcial compleja',
@@ -143,6 +159,7 @@ TIPOS_CRISIS = {
             'consciencia" [9]. TUSZ mantiene la etiqueta antigua. Para un modelo, la frontera entre cpsz y '
             'fnsz es clínica (la consciencia), no siempre visible en el EEG.'),
         'filtro_trazado_hz': (1, 30),
+        'grupo': 'focal',   # empieza en una zona de un hemisferio
     },
     'tcsz': {
         'nombre': 'tónico-clónica',
@@ -168,6 +185,7 @@ TIPOS_CRISIS = {
             '(la señal cambia muchísimo), pero buena parte de lo que aprende puede ser artefacto muscular, no '
             'EEG. En TUSZ hay pocas en train (31).'),
         'filtro_trazado_hz': (1, 30),
+        'grupo': 'generalizada',   # empieza a la vez en los dos hemisferios
     },
     'spsz': {
         'nombre': 'parcial simple',
@@ -192,6 +210,7 @@ TIPOS_CRISIS = {
             'producen cambios visibles en el EEG de superficie [19]. En TUSZ hay muy pocas (8 en train, de un '
             'solo paciente): para un modelo, casi imposible de aprender como clase aparte.'),
         'filtro_trazado_hz': (1, 30),
+        'grupo': 'focal',   # empieza en una zona de un hemisferio
     },
 }
 
@@ -209,3 +228,8 @@ def nombre_para_fichero(tipo):
     nombre = info_tipo(tipo)['nombre'].removeprefix('de ')
     nombre = unicodedata.normalize('NFKD', nombre).encode('ascii', 'ignore').decode()
     return nombre.replace('-', '_').replace(' ', '_')
+
+
+def grupo(tipo):
+    """Grupo de inicio del tipo ('focal', 'generalizada' o 'ausencia'), o None si no se sabe (sin_tipo)."""
+    return TIPOS_CRISIS.get(tipo, {}).get('grupo', GRUPO_TIPOS_SIN_FICHA.get(tipo))

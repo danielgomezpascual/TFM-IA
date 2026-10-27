@@ -2,11 +2,19 @@
     "inventario": "D:\\Dani\\TFM IA\\03.Codigo\\ALMA\\outputs\\fase_01\\01_inventario",
     "umbrales_leadin_min": [
         2,
+        3,
+        4,
         5,
         7,
         10,
         15
     ],
-    "leadin_elegido_min": 5,
-    "fecha": "2026-10-23 01:14"
+    "leadin_elegido_min": 4,
+    "versiones": {
+        "Python": "3.14.0",
+        "numpy": "2.5.4",
+        "pandas": "3.0.6",
+        "matplotlib": "3.11.2"
+    },
+    "fecha": "2026-10-27 16:52"
 }

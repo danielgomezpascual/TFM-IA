@@ -16,9 +16,13 @@ COLORES_ETIQUETA = {
     'tcsz': 'tab:purple', 'tnsz': 'gold', 'spsz': 'tab:brown', 'mysz': 'dimgray',
 }
 
-# Periodos alrededor de una crisis (para predicción)
+# Periodos alrededor de una crisis (para predicción). 'margen' = SPH; 'ictal' = la crisis (negro, como ⬛ seiz)
 COLORES_PERIODO = {'interictal': 'tab:gray', 'preictal': 'tab:cyan', 'margen': 'lightgray',
-                   'postictal': 'thistle'}
+                   'postictal': 'thistle', 'ictal': 'black'}
+
+# Destacado: lo que se selecciona en un esquema o el resultado más importante de un notebook (dorado)
+COLOR_DESTACADO = '#d4a017'
+FONDO_DESTACADO = '#fff6d8'
 
 # Tipos de canal, a juego con sus iconos (🧠 eeg, 🫀 ecg...)
 COLORES_TIPO_CANAL = {'eeg': 'tab:pink', 'ecg': 'tab:red', 'eog': 'tab:cyan', 'emg': 'tab:orange',

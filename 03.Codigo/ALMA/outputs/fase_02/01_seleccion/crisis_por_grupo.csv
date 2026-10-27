@@ -1,0 +1,4 @@
+grupo,_tipos,train_crisis,train_pacientes,dev_crisis,dev_pacientes,eval_crisis,eval_pacientes,validación cruzada_pacientes train+dev
+focal,"cpsz, fnsz, spsz",189,70,90,18,70,16,88
+generalizada,"gnsz, mysz, tcsz, tnsz",66,28,40,15,27,12,43
+ausencia,absz,30,8,22,4,2,1,12

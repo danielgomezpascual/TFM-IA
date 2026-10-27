@@ -1,0 +1,90 @@
+{
+    "inventario": "D:\\Dani\\TFM IA\\03.Codigo\\ALMA\\outputs\\fase_01\\01_inventario",
+    "umbrales_leadin_min": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        10,
+        15
+    ],
+    "umbral_principal_min": 4,
+    "sph_min": 1,
+    "parametros_por_tipo": {
+        "absz": {
+            "margen postictal (s)": 0,
+            "umbral lead-in (s)": 60,
+            "SPH (s)": 10,
+            "preictal máx. (s)": 50,
+            "grupo": "ausencia"
+        },
+        "cpsz": {
+            "margen postictal (s)": 300,
+            "umbral lead-in (s)": 240,
+            "SPH (s)": 60,
+            "preictal máx. (s)": 180,
+            "grupo": "focal"
+        },
+        "fnsz": {
+            "margen postictal (s)": 300,
+            "umbral lead-in (s)": 240,
+            "SPH (s)": 60,
+            "preictal máx. (s)": 180,
+            "grupo": "focal"
+        },
+        "gnsz": {
+            "margen postictal (s)": 300,
+            "umbral lead-in (s)": 240,
+            "SPH (s)": 60,
+            "preictal máx. (s)": 180,
+            "grupo": "generalizada"
+        },
+        "mysz": {
+            "margen postictal (s)": 300,
+            "umbral lead-in (s)": 240,
+            "SPH (s)": 60,
+            "preictal máx. (s)": 180,
+            "grupo": "generalizada"
+        },
+        "sin_tipo": {
+            "margen postictal (s)": 300,
+            "umbral lead-in (s)": 240,
+            "SPH (s)": 60,
+            "preictal máx. (s)": 180,
+            "grupo": "—"
+        },
+        "spsz": {
+            "margen postictal (s)": 300,
+            "umbral lead-in (s)": 240,
+            "SPH (s)": 60,
+            "preictal máx. (s)": 180,
+            "grupo": "focal"
+        },
+        "tcsz": {
+            "margen postictal (s)": 300,
+            "umbral lead-in (s)": 240,
+            "SPH (s)": 60,
+            "preictal máx. (s)": 180,
+            "grupo": "generalizada"
+        },
+        "tnsz": {
+            "margen postictal (s)": 300,
+            "umbral lead-in (s)": 240,
+            "SPH (s)": 60,
+            "preictal máx. (s)": 180,
+            "grupo": "generalizada"
+        }
+    },
+    "margen_previo_interictal_min": 15,
+    "duracion_minima_tramo_s": 60,
+    "interictal_solo_pacientes_con_crisis": true,
+    "fichero_ejemplo": "aaaaacrb_s001_t001",
+    "versiones": {
+        "Python": "3.14.0",
+        "numpy": "2.5.4",
+        "pandas": "3.0.6",
+        "matplotlib": "3.11.2"
+    },
+    "fecha": "2026-10-27 17:03"
+}

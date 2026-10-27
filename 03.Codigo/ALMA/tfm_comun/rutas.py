@@ -11,8 +11,10 @@ Estructura:
         03.Codigo\\ALMA\\                   <- RUTA_ALMA
             tfm_comun\\rutas.py            (este fichero)
             fase_01\\                      <- RUTA_FASE_01: notebooks de la Fase 1
+            fase_02\\                      <- RUTA_FASE_02: notebooks de la Fase 2
             outputs\\fase_01\\              <- RUTA_OUTPUTS_FASE_01: resultados de la Fase 1
                 <notebook>\\figuras\\       <- carpeta_resultados('fase_01/<notebook>')
+            outputs\\fase_02\\              <- RUTA_OUTPUTS_FASE_02: resultados de la Fase 2
 """
 
 from pathlib import Path
@@ -26,6 +28,10 @@ RUTA_OUTPUTS = RUTA_ALMA / 'outputs'
 # Fase 1 (exploración de datos): notebooks y resultados
 RUTA_FASE_01 = RUTA_ALMA / 'fase_01'
 RUTA_OUTPUTS_FASE_01 = RUTA_OUTPUTS / 'fase_01'
+
+# Fase 2 (preprocesado y ventanas): notebooks y resultados
+RUTA_FASE_02 = RUTA_ALMA / 'fase_02'
+RUTA_OUTPUTS_FASE_02 = RUTA_OUTPUTS / 'fase_02'
 
 
 def carpeta_resultados(nombre):
