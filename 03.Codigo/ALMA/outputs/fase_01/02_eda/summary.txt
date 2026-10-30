@@ -1,6 +1,6 @@
 === EDA TUSZ ===
 Dataset: D:\Dani\TFM IA\00.TUSZ\v2.0.6
-Inventario: 2026-10-27 16:51 | EDA: 2026-10-27 16:52
+Inventario: 2026-10-28 16:06 | EDA: 2026-10-28 16:07
 
 --- Resumen por split ---
          pacientes  sesiones  ficheros  horas  pac. con crisis  crisis  min. en crisis
@@ -31,7 +31,7 @@ tipo
 🟨 tnsz (🔷)       15     1      1         2     1      1     5.8    2.4    0.7
 
 --- Viabilidad para predicción (lead-in = tiempo sin crisis previo dentro del mismo fichero) ---
-Umbral del TFM: 4 min (tfm_comun/umbrales.py)
+Umbral del TFM: 4 min (tfm_comun/prediccion/umbrales.py)
          crisis  lead-in ≥ 2 min  pacientes (2 min)  lead-in ≥ 3 min  pacientes (3 min)  lead-in ≥ 4 min  pacientes (4 min)  lead-in ≥ 5 min  pacientes (5 min)  lead-in ≥ 7 min  pacientes (7 min)  lead-in ≥ 10 min  pacientes (10 min)  lead-in ≥ 15 min  pacientes (15 min)
 split                                                                                                                                                                                                                                                                          
 🔵 train    1812              534                128              397                112              332                101              230                 89               97                 64                35                  30                 8                   8

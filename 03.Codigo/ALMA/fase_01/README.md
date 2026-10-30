@@ -103,7 +103,7 @@ El **lead-in** es el tiempo **sin crisis** antes de cada crisis, dentro de su fi
 
 ⭐ El umbral de lead-in del TFM es **4 min** (3 min de preictal + 1 min de SPH): es el que más señal preictal da en train dejando al menos 20 pacientes en dev y en eval.
 
-**Lead-in útil.** Al lead-in se le descuenta el **margen postictal** de la crisis anterior (*lead-in útil*), y el margen, el umbral de lead-in y el SPH dependen del **tipo de crisis**. Se definen en `tfm_comun/umbrales.py`, en segundos: por defecto, 5 min de margen, **4 min de umbral** y 1 min de SPH; en las 🟩 ausencias, 0 s, 60 s y 10 s, porque son cortas, muy seguidas y casi sin postictal. El recuento con estos valores, y el análisis que llevó a elegir 4 min, están en `fase_02/01_seleccion_crisis.ipynb`.
+**Lead-in útil.** Al lead-in se le descuenta el **margen postictal** de la crisis anterior (*lead-in útil*), y el margen, el umbral de lead-in y el SPH dependen del **tipo de crisis**. Se definen en `tfm_comun/prediccion/umbrales.py`, en segundos: por defecto, 5 min de margen, **4 min de umbral** y 1 min de SPH; en las 🟩 ausencias, 0 s, 60 s y 10 s, porque son cortas, muy seguidas y casi sin postictal. El recuento con estos valores, y el análisis que llevó a elegir 4 min, están en `fase_02/01_seleccion_crisis.ipynb`.
 
 ### 3. Una crisis real, vista por dentro
 

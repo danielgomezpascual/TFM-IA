@@ -1,8 +1,8 @@
 tipo,grupo,ejemplo,estado,segundos,figuras
-fnsz,focal,aaaaacsx_s001_t000,✅ ok,23,16
-cpsz,focal,aaaaamtj_s001_t000,✅ ok,22,16
-spsz,focal,aaaaampz_s004_t002,✅ ok,19,16
+fnsz,focal,aaaaacsx_s001_t000,✅ ok,19,16
+cpsz,focal,aaaaamtj_s001_t000,✅ ok,19,16
+spsz,focal,aaaaampz_s004_t002,✅ ok,17,16
 tnsz,generalizada,aaaaanjw_s001_t000,✅ ok,19,16
 gnsz,generalizada,aaaaaacz_s006_t000,✅ ok,19,16
-tcsz,generalizada,aaaaabdv_s001_t001,✅ ok,19,16
-absz,ausencia,aaaaacrb_s001_t001,✅ ok,18,16
+tcsz,generalizada,aaaaabdv_s001_t001,✅ ok,18,16
+absz,ausencia,aaaaacrb_s001_t001,✅ ok,19,16
