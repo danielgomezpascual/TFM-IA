@@ -1,0 +1,43 @@
+{
+    "senales": "D:\\Dani\\TFM IA\\03.Codigo\\ALMA\\outputs\\fase_02\\02_preprocesado\\senales.csv",
+    "tramos_con_senal": 103,
+    "modo_prueba": true,
+    "ventana_s": 4,
+    "muestras_por_ventana": 1024,
+    "solape_por_clase": {
+        "interictal": 0.0,
+        "preictal": 0.5,
+        "ictal": 0.5
+    },
+    "preictal_desde_el_final": true,
+    "umbral_principal_min": 4,
+    "sph_general_s": 60,
+    "umbrales_comparacion_min": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        10,
+        15
+    ],
+    "umbral_rechazo_uv": 1000,
+    "tipos_aparte": [
+        "tcsz"
+    ],
+    "max_perdida_pct": 5,
+    "rechazo_en_clases": [
+        "interictal",
+        "preictal"
+    ],
+    "max_canales_planos": 2,
+    "umbral_canal_plano_uv": 0.5,
+    "fichero_ejemplo": "aaaaacrb_s001_t001",
+    "versiones": {
+        "Python": "3.14.0",
+        "numpy": "2.5.4",
+        "pandas": "3.0.6",
+        "matplotlib": "3.11.2"
+    },
+    "fecha": "2026-10-29 16:06"
+}

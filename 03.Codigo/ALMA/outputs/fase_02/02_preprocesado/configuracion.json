@@ -1,0 +1,61 @@
+{
+    "tramos": "D:\\Dani\\TFM IA\\03.Codigo\\ALMA\\outputs\\fase_02\\01_seleccion\\tramos.csv",
+    "senales": "D:\\Dani\\TFM IA\\03.Codigo\\ALMA\\outputs\\fase_02\\02_preprocesado\\senales",
+    "fs_hz": 256,
+    "canales": [
+        "FP1-F7",
+        "F7-T3",
+        "T3-T5",
+        "T5-O1",
+        "FP2-F8",
+        "F8-T4",
+        "T4-T6",
+        "T6-O2",
+        "A1-T3",
+        "T3-C3",
+        "C3-CZ",
+        "CZ-C4",
+        "C4-T4",
+        "T4-A2",
+        "FP1-F3",
+        "F3-C3",
+        "C3-P3",
+        "P3-O1",
+        "FP2-F4",
+        "F4-C4",
+        "C4-P4",
+        "P4-O2"
+    ],
+    "paso_banda_hz": [
+        0.5,
+        40
+    ],
+    "orden_paso_banda": 4,
+    "notch_hz": 60,
+    "calidad_notch": 30,
+    "filtro": "Butterworth causal (sosfilt), con estado inicial",
+    "orden_cadena": [
+        "montaje TCP 22 canales",
+        "µV",
+        "remuestreo a 256 Hz",
+        "paso banda",
+        "notch"
+    ],
+    "tipo_dato": "float16",
+    "unidad": "µV",
+    "limite_uv": 60000,
+    "normalizada": false,
+    "margen_lectura_s": 10,
+    "umbral_canal_plano_uv": 0.5,
+    "solo_prueba": 20,
+    "fichero_ejemplo": "aaaaacrb_s001_t001",
+    "versiones": {
+        "Python": "3.14.0",
+        "numpy": "2.5.4",
+        "pandas": "3.0.6",
+        "matplotlib": "3.11.2",
+        "mne": "1.13.2",
+        "scipy": "1.18.1"
+    },
+    "fecha": "2026-10-29 16:24"
+}

@@ -1,0 +1,33 @@
+=== Preprocesado de la señal (Fase 2 · 02) ===
+Preprocesado: 2026-10-29 16:24 · MODO PRUEBA (20 ficheros)
+Cadena: montaje TCP de 22 canales → µV → 256 Hz → paso banda 0,5–40 Hz (Butterworth orden 4, causal) → notch 60 Hz
+Formato: .npy por tramo, float16, µV, sin normalizar · 0,2 GB
+Tramos con señal: 101 de 7.665 · errores: 1 ficheros
+
+--- GB por clase y partición ---
+split         🔵 train  🟡 dev  🟢 eval  total
+clase                                      
+▲ ictal          1.35   0.30    0.27   1.92
+△ interictal    15.60  13.70    2.86  32.16
+◭ preictal       1.10   0.78    0.39   2.27
+total           18.05  14.78    3.52  36.35
+
+--- Calidad de la señal por partición y clase ---
+                      tramos  horas  pico mediano (µV)  pico p99 (µV)  % con canal plano  % con 20 canales  % con recortes
+split   clase                                                                                                             
+🔵 train ▲ ictal         35.0    0.2              197.9         3100.7                0.0               8.6             0.0
+        △ interictal     8.0    1.4              261.1         3448.7                0.0               0.0             0.0
+        ◭ preictal      21.0    1.3              207.6         2191.9                0.0               9.5             0.0
+🟡 dev   ▲ ictal         11.0    0.1              571.9         1666.2                0.0               0.0             0.0
+        △ interictal     2.0    0.3             1175.8         1872.6                0.0               0.0             0.0
+        ◭ preictal      11.0    0.4              518.1         1546.4                0.0               0.0             0.0
+🟢 eval  ▲ ictal          8.0    0.1              117.5         4837.3                0.0               0.0             0.0
+        △ interictal     2.0    0.3            25277.7        27486.5                0.0               0.0             0.0
+        ◭ preictal       3.0    0.3              163.6         5645.5                0.0               0.0             0.0
+
+--- Frecuencia original de los tramos ---
+split        🔵 train  🟡 dev  🟢 eval
+fs_original                        
+250.0             59     19       0
+256.0              3      0      13
+400.0              2      5       0

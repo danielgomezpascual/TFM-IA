@@ -1,0 +1,57 @@
+=== Ventanas (Fase 2 · 03) ===
+Ventanas: 2026-10-29 16:06  ·  MODO PRUEBA (preprocesado incompleto)
+Ventana de 4 s (1024 muestras) · solape: △ 0%, ◭ 50%, ▲ 50%
+Tramos con señal: 103 · ventanas: 5.657 (5.294 se usan)
+Umbral de rechazo: 1.000 µV (valor fijo, común a △ y ◭, comprobado con las crisis de cada tipo), aplicado a interictal, preictal
+
+--- Ventanas que se usarán, por partición ---
+         △ interictal  preictal (modelo general)  preictal (modelo de grupo)  ▲ ictal  interictal por preictal (general)
+split                                                                                                                   
+🔵 train          1277                        696                         750      422                                1.8
+🟡 dev             263                         88                         292      136                                3.0
+🟢 eval              0                        167                         167       94                                0.0
+
+--- ◭ Ventanas preictales de cada modelo ---
+split                      🔵 train  🟡 dev  🟢 eval
+◭ ventanas preictales de…                        
+en_general                     705     88     176
+en_umbral_2min                 561    140      84
+en_umbral_3min                 755    116     116
+en_umbral_4min                 705     88     176
+en_umbral_5min                 827    118     236
+en_umbral_7min                 712    178     356
+en_umbral_10min                804      0     268
+en_umbral_15min                  0      0       0
+en_modelo_grupo                759    295     176
+en_test_comun                    0      0      84
+
+--- Picos de las ventanas ▲ ictales por tipo (µV) ---
+             crisis  ventanas   mediana_uv       p95_uv       p99_uv  maximo_uv  pct_por_encima  cuenta_en_la_comprobacion
+tipo                                                                                                                      
+🟩 absz (🔹)       23       101   492.000000   578.000000   579.500000      637.5        0.000000                       True
+🟦 gnsz (🔷)       14       168   100.900002  1052.000000  3900.300049     5188.0        6.500000                       True
+🟥 fnsz (♦️)      11       324    96.300003   212.699997  1610.000000     1780.0        1.500000                       True
+🟧 cpsz (♦️)       2        38    58.799999   668.299988   715.500000      715.5        0.000000                       True
+🟪 tcsz (🔷)        1        21  1012.500000  4328.000000  4328.000000     4328.0       61.900002                      False
+
+--- Ventanas descartadas ---
+                      ventanas  descartadas por amplitud  descartadas por canales planos  % descartadas
+split   clase                                                                                          
+🔵 train ▲ ictal          422.0                       0.0                             0.0            0.0
+        △ interictal    1288.0                      11.0                             0.0            0.9
+        ◭ preictal      2142.0                      26.0                             0.0            1.2
+🟡 dev   ▲ ictal          136.0                       0.0                             0.0            0.0
+        △ interictal     265.0                       2.0                             0.0            0.8
+        ◭ preictal       527.0                       6.0                             0.0            1.1
+🟢 eval  ▲ ictal           94.0                       0.0                             0.0            0.0
+        △ interictal     309.0                     309.0                             0.0          100.0
+        ◭ preictal       474.0                       9.0                             0.0            1.9
+
+--- Crisis que se quedan sin ventanas ---
+             crisis  duracion_mediana_s  crisis_con_ventanas  ventanas_por_crisis  % sin ventanas
+tipo                                                                                             
+🟩 absz (🔹)       27               7.180                   23                  2.0            14.8
+🟦 gnsz (🔷)       14              20.655                   14                  8.5             0.0
+🟥 fnsz (♦️)      11              48.500                   11                 23.0             0.0
+🟧 cpsz (♦️)       2              40.130                    2                 19.0             0.0
+🟪 tcsz (🔷)        1              45.030                    1                 21.0             0.0

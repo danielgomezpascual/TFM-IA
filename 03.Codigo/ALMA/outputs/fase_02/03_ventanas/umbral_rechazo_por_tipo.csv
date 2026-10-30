@@ -1,0 +1,6 @@
+tipo,crisis,ventanas,mediana_uv,p95_uv,p99_uv,maximo_uv,pct_por_encima,cuenta_en_la_comprobacion
+absz,23,101,492.0,578.0,579.5,637.5,0.0,True
+gnsz,14,168,100.9,1052.0,3900.3,5188.0,6.5,True
+fnsz,11,324,96.3,212.7,1610.0,1780.0,1.5,True
+cpsz,2,38,58.8,668.3,715.5,715.5,0.0,True
+tcsz,1,21,1012.5,4328.0,4328.0,4328.0,61.9,False
