@@ -1,7 +1,7 @@
 {
     "senales": "D:\\Dani\\TFM IA\\03.Codigo\\ALMA\\outputs\\fase_02\\02_preprocesado\\senales.csv",
-    "tramos_con_senal": 103,
-    "modo_prueba": true,
+    "tramos_con_senal": 7665,
+    "modo_prueba": false,
     "ventana_s": 4,
     "muestras_por_ventana": 1024,
     "solape_por_clase": {
@@ -39,5 +39,5 @@
         "pandas": "3.0.6",
         "matplotlib": "3.11.2"
     },
-    "fecha": "2026-10-29 16:06"
+    "fecha": "2026-10-30 16:05"
 }

@@ -64,6 +64,14 @@ Los periodos alrededor de una crisis con los valores por defecto y con los de la
 Cómo se cortan las ventanas de 4 s antes de una crisis y a qué modelo pertenece cada una (señal real: la ausencia de ejemplo, generada en `fase_02/03_ventanas.ipynb`).
 ![ventanas](ventanas_corte.png)
 
+### `balanceo.py` · `limitar_por_paciente()`, `equilibrar_por_paciente()`
+Las dos reglas con 4 pacientes inventados: máximo de 💤 interictales por paciente (todas las particiones) y, solo en entrenamiento, tantas 💤 interictales como ⏳ preictales dentro de cada paciente.
+![balanceo](balanceo_por_paciente.png)
+
+### `pliegues.py` · `pliegues_por_paciente()`
+Cómo se reparten 6 pacientes inventados en 3 pliegues para la validación cruzada por paciente: cada paciente entero en uno y pliegues parecidos.
+![pliegues](pliegues_por_paciente.png)
+
 ## dataset/
 
 ### `anotaciones.py` · `crisis_del_fichero()`
@@ -93,7 +101,9 @@ Un eje logarítmico con potencias de 10 y con números normales.
 ![ejes](ejes_eje_log_legible.png)
 
 ### `tablas.py` · `con_separadores()`
+Líneas entre grupos de columnas (🔵 train | 🟡 dev | 🟢 eval | ⚪ todas, con columnas de uno o de varios niveles) y de filas, y números en formato español. **Se usa en toda tabla que se muestre en un notebook.**
 ![con_separadores](tablas_con_separadores.png)
 
 ### `tablas.py` · `mostrar_destacado()`
+El resultado principal de un notebook en un recuadro dorado, con las mismas líneas y el mismo formato de números, en negro para que se lea con el tema oscuro.
 ![mostrar_destacado](tablas_mostrar_destacado.png)

@@ -26,6 +26,11 @@ COLORES_PERIODO = {'interictal': 'tab:gray', 'preictal': 'tab:cyan', 'margen': '
 COLOR_DESTACADO = '#d4a017'
 FONDO_DESTACADO = '#fff6d8'
 
+# Esquemas descriptivos (diagramas, no datos): rojo y negro, como fase_02/img/flujo_notebooks.png.
+# Cabeceras negras con línea roja debajo, rojo oscuro de acento y fondo rosado para lo importante.
+COLORES_ESQUEMA = {'negro': '#141414', 'rojo': '#9b1b1e', 'fondo_rojo': '#f7e8e8', 'gris': '#8a8a8a',
+                   'fondo_gris': '#f2f2f2'}
+
 # Tipos de canal, a juego con sus iconos (🧠 eeg, 🫀 ecg...)
 COLORES_TIPO_CANAL = {'eeg': 'tab:pink', 'ecg': 'tab:red', 'eog': 'tab:cyan', 'emg': 'tab:orange',
                       'stim': 'gold', 'resp': 'tab:blue', 'misc': 'tab:gray'}

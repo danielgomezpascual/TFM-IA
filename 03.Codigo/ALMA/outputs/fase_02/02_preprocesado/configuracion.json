@@ -47,7 +47,7 @@
     "normalizada": false,
     "margen_lectura_s": 10,
     "umbral_canal_plano_uv": 0.5,
-    "solo_prueba": 20,
+    "solo_prueba": null,
     "fichero_ejemplo": "aaaaacrb_s001_t001",
     "versiones": {
         "Python": "3.14.0",
@@ -57,5 +57,5 @@
         "mne": "1.13.2",
         "scipy": "1.18.1"
     },
-    "fecha": "2026-10-29 16:24"
+    "fecha": "2026-10-30 15:30"
 }

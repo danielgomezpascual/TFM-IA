@@ -41,8 +41,52 @@
         "pandas": "3.0.6",
         "matplotlib": "3.11.2",
         "scipy": "1.18.1",
-        "mne": "1.13.2"
+        "mne": "1.13.2",
+        "pyvista": "0.49.2"
     },
-    "fecha": "2026-10-28 16:08",
-    "ejemplo": "aaaaampz_s004_t002"
+    "fecha": "2026-10-31 01:29",
+    "ejemplo": "aaaaampz_s004_t002",
+    "localizacion": {
+        "metodo": "sLORETA",
+        "banda_hz": [
+            1,
+            30
+        ],
+        "ventana_inicio_s": 5,
+        "tramo_inicio_s": [
+            377.32,
+            382.32
+        ],
+        "tramo_basal_s": [
+            0,
+            77.32
+        ],
+        "electrodos": [
+            "FP1",
+            "FP2",
+            "F3",
+            "F4",
+            "C3",
+            "C4",
+            "P3",
+            "P4",
+            "O1",
+            "O2",
+            "F7",
+            "F8",
+            "T3",
+            "T4",
+            "T5",
+            "T6",
+            "FZ",
+            "CZ",
+            "PZ"
+        ],
+        "maximo": {
+            "región": "giro parahipocampal",
+            "lóbulo": "temporal",
+            "hemisferio": "derecho",
+            "aumento (dB)": 2.781398302273818
+        }
+    }
 }

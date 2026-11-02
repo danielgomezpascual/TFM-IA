@@ -16,6 +16,7 @@ Estructura:
                 <notebook>\\figuras\\       <- carpeta_resultados('fase_01/<notebook>')
             outputs\\fase_02\\              <- RUTA_OUTPUTS_FASE_02: resultados de la Fase 2
                 02_preprocesado\\senales\\  <- RUTA_SENALES: señal preprocesada (~36 GB, no subir a GitHub)
+            outputs\\comun\\modelos_cabeza\\ <- RUTA_MODELOS_CABEZA: modelos directos guardados (senal/fuentes.py)
 """
 
 from pathlib import Path
@@ -36,6 +37,10 @@ RUTA_OUTPUTS_FASE_02 = RUTA_OUTPUTS / 'fase_02'
 
 # Señal preprocesada (02_preprocesado): un .npy por tramo, en <split>/<clase>/
 RUTA_SENALES = RUTA_OUTPUTS_FASE_02 / '02_preprocesado' / 'senales'
+
+# Modelos directos de la localización de fuentes (uno por conjunto de electrodos, ~10 MB cada uno).
+# Se calculan la primera vez y se reutilizan en todos los notebooks (tfm_comun/senal/fuentes.py)
+RUTA_MODELOS_CABEZA = RUTA_OUTPUTS / 'comun' / 'modelos_cabeza'
 
 
 def carpeta_resultados(nombre):

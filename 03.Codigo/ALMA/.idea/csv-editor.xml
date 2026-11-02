@@ -52,6 +52,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\outputs\fase_02\04_particiones_y_balanceo\conjuntos\clasificacion.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\outputs\fase_02\04_particiones_y_balanceo\resumen_conjuntos.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>

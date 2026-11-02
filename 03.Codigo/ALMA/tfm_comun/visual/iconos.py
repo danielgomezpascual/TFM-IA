@@ -35,12 +35,13 @@ ICONO_GRUPO = {
 # Iconos de las particiones ('todas' = dataset completo; 🔴 se reserva para avisos)
 ICONO_SPLIT = {'train': '🔵', 'dev': '🟡', 'eval': '🟢', 'todas': '⚪'}
 
-# Iconos de las clases de los tramos y ventanas (fase_02): triángulos planos que se van rellenando
-# según se acerca la crisis. Son caracteres de texto (no emojis), así que también se ven bien en matplotlib.
+# Iconos de las clases de los tramos y ventanas (fase_02): de la calma a la crisis.
+# Norma: el icono va SIEMPRE con el nombre al lado ('💤 interictal'), nunca solo.
+# En las figuras de matplotlib no se usan (no dibuja bien los emojis): ahí va el nombre y el color de COLORES_PERIODO.
 ICONO_CLASE = {
-    'interictal': '△',   # vacío: lejos de cualquier crisis
-    'preictal': '◭',     # medio lleno: se acerca una crisis
-    'ictal': '▲',        # lleno: la crisis
+    'interictal': '💤',   # calma: lejos de cualquier crisis
+    'preictal': '⏳',     # cuenta atrás: se acerca una crisis
+    'ictal': '⚡',        # la crisis
 }
 
 # Iconos de los tipos de canal (tipos de MNE, ver canales.py)
@@ -80,7 +81,7 @@ def con_icono(texto):
 
     Mira, por este orden:
         1. ¿Es una etiqueta de crisis?   'absz'       -> '🟩 absz (🔹)'
-        2. ¿Es un grupo, clase, tipo de canal o región?  'focal' -> '♦️ focal' · 'preictal' -> '◭ preictal' ·
+        2. ¿Es un grupo, clase, tipo de canal o región?  'focal' -> '♦️ focal' · 'preictal' -> '⏳ preictal' ·
            'eeg' -> '🧠 eeg' · 'temporal' -> '🟧 temporal'
         3. ¿Empieza por una partición?   'dev crisis' -> '🟡 dev crisis'
     Acepta cualquier valor (lo pasa a texto), así que se puede usar con df.rename(index=con_icono).

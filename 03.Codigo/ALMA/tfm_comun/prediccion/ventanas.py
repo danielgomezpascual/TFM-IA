@@ -20,8 +20,8 @@ Por qué 4 s (síntesis del estado del arte, Google Doc "Síntesis estado del ar
   (potencia de 2: va bien para la FFT). Se puede cambiar aquí y comparar en la Fase 3 (Roy 2020 barre 1-16 s).
 
 Solape (fracción de la ventana que comparte con la siguiente)
-- △ interictal: 0 (sin solape). Sobra señal: hay unas 18 h de interictal por cada hora de preictal.
-- ◭ preictal y ▲ ictal: 0,5 (50 %). Hay poca señal, así que se aprovecha más (como STAN 2025 y
+- 💤 interictal: 0 (sin solape). Sobra señal: hay unas 18 h de interictal por cada hora de preictal.
+- ⏳ preictal y ⚡ ictal: 0,5 (50 %). Hay poca señal, así que se aprovecha más (como STAN 2025 y
   Georgis-Yap 2023, que solapan el preictal). No inventa datos: son trozos reales desplazados 2 s.
 
 Alineación

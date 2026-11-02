@@ -1,3 +1,6 @@
 00.TUSZ
 # Señal preprocesada de la Fase 2 (decenas de GB)
 03.Codigo/ALMA/outputs/**/senales/
+
+# Modelos de la cabeza de la localización de fuentes (se recalculan solos, ~10 MB cada uno)
+03.Codigo/ALMA/outputs/comun/modelos_cabeza/

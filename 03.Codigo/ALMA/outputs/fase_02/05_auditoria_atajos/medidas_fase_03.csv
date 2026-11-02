@@ -1,0 +1,9 @@
+atajo,semáforo,fuerza que decide,medida,obligatoria
+canales a 0 (H1),🟢 no separa,0.515648316746965,Ninguna: no separa. Se puede seguir con 22 canales,False
+equipo: montaje y Hz (H2),🟢 no separa,0.5279246988810425,Ninguna: no separa,False
+nivel de señal (H3),🟢 no separa,0.5473016797827722,Ninguna: no separa,False
+posición en el fichero (H4),🔴 separa mucho,0.7524495180776651,Evaluar la red también en conjuntos_control/general_emparejado_posicion.csv y comparar con la nota normal,True
+tipo de fichero (H5),🔴 separa mucho,0.9262682701997019,Medir la red también en conjuntos_control/general_misma_sesion.csv (y en su variante estricta) y comparar con la nota normal,True
+techo del atajo (sección 10),🟡 separa un poco,0.6016072705159268,"Dar la nota de la red en el conjunto normal y en los controles; el techo (0.60 en eval) es lo máximo que la posición podría explicar, no una nota a superar",True
+inicio del fichero (03),🔴 sin corregir,,Volver a ejecutar 03 (DESCARTE_INICIO_FICHERO_S) y 04 antes de entrenar,True
+equilibrado por paciente (04),🔴 sin corregir,,Volver a ejecutar 04 con EQUILIBRADO_EXACTO = True (o usar pesos por paciente en la Fase 3),True
