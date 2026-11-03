@@ -1,5 +1,5 @@
 === Preprocesado de la señal (Fase 2 · 02) ===
-Preprocesado: 2026-10-30 15:30
+Preprocesado: 2026-11-03 12:35
 Cadena: montaje TCP de 22 canales → µV → 256 Hz → paso banda 0,5–40 Hz (Butterworth orden 4, causal) → notch 60 Hz
 Formato: .npy por tramo, float16, µV, sin normalizar · 36,4 GB
 Tramos con señal: 7.665 de 7.665 · errores: 0 ficheros
@@ -7,23 +7,23 @@ Tramos con señal: 7.665 de 7.665 · errores: 0 ficheros
 --- GB por clase y partición ---
 split         🔵 train  🟡 dev  🟢 eval  total
 clase                                      
-▲ ictal          1.35   0.30    0.27   1.92
-△ interictal    15.60  13.70    2.86  32.16
-◭ preictal       1.10   0.78    0.39   2.27
+⚡ ictal          1.35   0.30    0.27   1.92
+💤 interictal    15.60  13.70    2.86  32.16
+⏳ preictal       1.10   0.78    0.39   2.27
 total           18.05  14.78    3.52  36.35
 
 --- Calidad de la señal por partición y clase ---
                       tramos  horas  pico mediano (µV)  pico p99 (µV)  % con canal plano  % con 20 canales  % con recortes
 split   clase                                                                                                             
-🔵 train ▲ ictal       1810.0   33.2              136.7         9777.7                0.0              32.2             0.0
-        △ interictal  2274.0  384.8              288.1        17835.4                0.7              20.2             0.0
-        ◭ preictal     374.0   27.2              211.0        11934.4                0.8              32.4             0.0
-🟡 dev   ▲ ictal        492.0    7.4              163.3         6098.9                0.0              15.4             0.0
-        △ interictal  1485.0  337.9              267.7        22182.4                0.0              13.9             0.0
-        ◭ preictal     206.0   19.2              413.2        12260.2                0.5               9.7             0.0
-🟢 eval  ▲ ictal        360.0    6.6              188.4        12512.2                0.0               0.0             0.0
-        △ interictal   549.0   70.6              268.0        15148.6                0.0               2.9             0.0
-        ◭ preictal     115.0    9.6              225.3        14344.7                0.0               0.0             0.0
+🔵 train ⚡ ictal       1810.0   33.2              136.7         9777.7                0.0              32.2             0.0
+        💤 interictal  2274.0  384.8              288.1        17835.4                0.7              20.2             0.0
+        ⏳ preictal     374.0   27.2              211.0        11934.4                0.8              32.4             0.0
+🟡 dev   ⚡ ictal        492.0    7.4              163.3         6098.9                0.0              15.4             0.0
+        💤 interictal  1485.0  337.9              267.7        22182.4                0.0              13.9             0.0
+        ⏳ preictal     206.0   19.2              413.2        12260.2                0.5               9.7             0.0
+🟢 eval  ⚡ ictal        360.0    6.6              188.4        12512.2                0.0               0.0             0.0
+        💤 interictal   549.0   70.6              268.0        15148.6                0.0               2.9             0.0
+        ⏳ preictal     115.0    9.6              225.3        14344.7                0.0               0.0             0.0
 
 --- Frecuencia original de los tramos ---
 split        🔵 train  🟡 dev  🟢 eval

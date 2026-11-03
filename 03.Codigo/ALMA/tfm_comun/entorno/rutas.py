@@ -16,6 +16,9 @@ Estructura:
                 <notebook>\\figuras\\       <- carpeta_resultados('fase_01/<notebook>')
             outputs\\fase_02\\              <- RUTA_OUTPUTS_FASE_02: resultados de la Fase 2
                 02_preprocesado\\senales\\  <- RUTA_SENALES: señal preprocesada (~36 GB, no subir a GitHub)
+            fase_03\\                      <- RUTA_FASE_03: notebooks de la Fase 3
+            outputs\\fase_03\\              <- RUTA_OUTPUTS_FASE_03: resultados de la Fase 3
+                01_datos_red\\paquetes\\    <- RUTA_PAQUETES: ventanas listas para la red (~GB, no subir a GitHub)
             outputs\\comun\\modelos_cabeza\\ <- RUTA_MODELOS_CABEZA: modelos directos guardados (senal/fuentes.py)
 """
 
@@ -37,6 +40,13 @@ RUTA_OUTPUTS_FASE_02 = RUTA_OUTPUTS / 'fase_02'
 
 # Señal preprocesada (02_preprocesado): un .npy por tramo, en <split>/<clase>/
 RUTA_SENALES = RUTA_OUTPUTS_FASE_02 / '02_preprocesado' / 'senales'
+
+# Fase 3 (modelo de predicción): notebooks y resultados
+RUTA_FASE_03 = RUTA_ALMA / 'fase_03'
+RUTA_OUTPUTS_FASE_03 = RUTA_OUTPUTS / 'fase_03'
+
+# Paquetes (01_datos_red): las ventanas de cada conjunto y partición, juntas en un .npy listo para la red
+RUTA_PAQUETES = RUTA_OUTPUTS_FASE_03 / '01_datos_red' / 'paquetes'
 
 # Modelos directos de la localización de fuentes (uno por conjunto de electrodos, ~10 MB cada uno).
 # Se calculan la primera vez y se reutilizan en todos los notebooks (tfm_comun/senal/fuentes.py)

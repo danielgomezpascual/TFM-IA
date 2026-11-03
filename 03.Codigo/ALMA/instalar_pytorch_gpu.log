@@ -1,0 +1,6 @@
+Tarjeta NVIDIA: True | CUDA que admite el driver: None
+🔴 Hay una tarjeta NVIDIA, pero este PyTorch no la usa (torch 2.15.0+cpu · GPU: -). Se cambia por la versión con CUDA.
+Tarjeta NVIDIA detectada (el driver admite CUDA ?).
+Instalando PyTorch con CUDA 13.2 desde https://download.pytorch.org/whl/cu132 (~2,5 GB, puede tardar)...
+✅ PyTorch ve la GPU: torch 2.15.0+cu132 · GPU: NVIDIA GeForce RTX 3060
+RESULTADO: (True, 'torch 2.15.0+cu132 · GPU: NVIDIA GeForce RTX 3060')

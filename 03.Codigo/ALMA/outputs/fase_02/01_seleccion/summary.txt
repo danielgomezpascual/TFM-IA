@@ -1,5 +1,5 @@
 === Selección de crisis y tramos (Fase 2 · 01) ===
-Inventario: 2026-10-28 16:06 · selección: 2026-10-28 16:12
+Inventario: 2026-10-28 16:06 · selección: 2026-11-03 12:34
 Umbrales que se comparan: [2, 3, 4, 5, 7, 10, 15] min · modelo general: 4 min con SPH de 1 min
 Interictal a más de 15 min antes de una crisis · tramo mínimo 60 s
 Crisis descartadas: 2 (anómalas o de menos de 2 s)
@@ -106,8 +106,8 @@ umbral_min split
            🟢 eval           2       2             0.5               6.2                     13
 
 --- Tramos por clase y partición ---
-split       🔵 train  🟡 dev  🟢 eval
-clase                             
-ictal          1810    492     360
-interictal     2274   1485     549
-preictal        374    206     115
+split         🔵 train  🟡 dev  🟢 eval
+clase                               
+⚡ ictal          1810    492     360
+💤 interictal     2274   1485     549
+⏳ preictal        374    206     115

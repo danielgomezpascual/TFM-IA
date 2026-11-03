@@ -34,11 +34,11 @@
 
 | | Pregunta | Dónde se responde |
 |---|---|---|
-| ✂️ | ¿**Qué trozos** de qué EDF se usan? ⏳ preictal, 💤 interictal y ⚡ ictal | `01` selección |
-| 🎛️ | ¿Cómo se deja la señal **igual para todos los equipos**? | `02` preprocesado |
-| 🪟 | ¿Cómo se corta en **ventanas** y cuáles se descartan? | `03` ventanas |
-| ⚖️ | ¿Qué ventanas ve **cada modelo** para entrenar, validar y evaluar? | `04` particiones y balanceo |
-| 🕵️ | ¿Hay **atajos** (pistas que no son EEG preictal) con los que un modelo podría acertar? | `05` auditoría de atajos |
+| ✂️ | ¿**Qué trozos** de qué EDF se usan? ⏳ preictal, 💤 interictal y ⚡ ictal | **F02.01** selección |
+| 🎛️ | ¿Cómo se deja la señal **igual para todos los equipos**? | **F02.02** preprocesado |
+| 🪟 | ¿Cómo se corta en **ventanas** y cuáles se descartan? | **F02.03** ventanas |
+| ⚖️ | ¿Qué ventanas ve **cada modelo** para entrenar, validar y evaluar? | **F02.04** particiones y balanceo |
+| 🕵️ | ¿Hay **atajos** (pistas que no son EEG preictal) con los que un modelo podría acertar? | **F02.05** auditoría de atajos |
 
 > 💬 Esta fase **tampoco entrena ningún modelo**. Su resultado son señales en formato común y **tablas índice** listas para que la Fase 3 solo tenga que filtrar y cargar.
 
@@ -50,8 +50,8 @@
 <img src="img/flujo_notebooks.png" width="95%" alt="Flujo de los notebooks de la Fase 2">
 </div>
 
-- **01 → 02**: `01` solo apunta **tiempos** (no toca la señal). `02` lee únicamente los EDF de `tramos.csv`.
-- **02 → 03 → 04**: la señal se guarda **una sola vez** (`.npy`). `ventanas.csv` y los conjuntos son **índices**: no se duplica la señal.
+- **F02.01 → F02.02**: **F02.01** solo apunta **tiempos** (no toca la señal). **F02.02** lee únicamente los EDF de `tramos.csv`.
+- **F02.02 → F02.03 → F02.04**: la señal se guarda **una sola vez** (`.npy`). `ventanas.csv` y los conjuntos son **índices**: no se duplica la señal.
 - La cadena de preprocesado (`tfm_comun/senal/`) es la **misma que usará la demo** en directo: filtro causal y funciones sin MNE.
 
 ---
@@ -60,11 +60,11 @@
 
 | | Notebook | Qué hace | Lee | Genera |
 |---|---|---|---|---|
-| 1️⃣ | `01_seleccion_crisis.ipynb` | Limpia crisis, cuenta crisis y pacientes por **umbral de lead-in**, tipo y partición, y apunta los tramos ⏳ preictales, 💤 interictales y ⚡ ictales | `fase_01/01_inventario/` | `tramos.csv` |
-| 2️⃣ | `02_preprocesado.ipynb` | Montaje **TCP de 22 canales**, remuestreo a **256 Hz**, filtrado causal, µV y **float16**. Mide la calidad de cada tramo | `tramos.csv` + EDF | `senales/*.npy` + `senales.csv` |
-| 3️⃣ | `03_ventanas.ipynb` | Corta en ventanas de **4 s** (50 % de solape en ⏳ y ⚡), marca a qué modelo va cada una (`en_...`) y las de mala calidad o del **inicio del fichero** | `senales.csv` | `ventanas.csv` |
-| 4️⃣ | `04_particiones_y_balanceo.ipynb` | Comprueba particiones por paciente, limita 💤 interictal por paciente, arma un conjunto por modelo y **equilibra solo train**, exactamente mitad y mitad en cada paciente | `ventanas.csv` | `conjuntos/<modelo>.csv` |
-| 5️⃣ | `05_auditoria_atajos.ipynb` | Busca **atajos** (canales a 0, equipo, minuto del fichero, tipo de fichero): comprueba las correcciones de 03 y 04, semáforo por variable, **techo del atajo** (modelo que solo ve metadatos) y **dos conjuntos de control**: emparejado por posición y 💤 de la misma sesión. Todo se decide con los datos | `conjuntos/` + `senales.csv` + `edfs.csv` | `medidas_fase_03.csv` + `conjuntos_control/` |
+| 1️⃣ | **F02.01** · `01_seleccion_crisis` | Limpia crisis, cuenta crisis y pacientes por **umbral de lead-in**, tipo y partición, y apunta los tramos ⏳ preictales, 💤 interictales y ⚡ ictales | `fase_01/01_inventario/` | `tramos.csv` |
+| 2️⃣ | **F02.02** · `02_preprocesado` | Montaje **TCP de 22 canales**, remuestreo a **256 Hz**, filtrado causal, µV y **float16**. Mide la calidad de cada tramo | `tramos.csv` + EDF | `senales/*.npy` + `senales.csv` |
+| 3️⃣ | **F02.03** · `03_ventanas` | Corta en ventanas de **4 s** (50 % de solape en ⏳ y ⚡), marca a qué modelo va cada una (`en_...`) y las de mala calidad o del **inicio del fichero** | `senales.csv` | `ventanas.csv` |
+| 4️⃣ | **F02.04** · `04_particiones_y_balanceo` | Comprueba particiones por paciente, limita 💤 interictal por paciente, arma un conjunto por modelo y **equilibra solo train**, exactamente mitad y mitad en cada paciente | `ventanas.csv` | `conjuntos/<modelo>.csv` |
+| 5️⃣ | **F02.05** · `05_auditoria_atajos` | Busca **atajos** (canales a 0, equipo, minuto del fichero, tipo de fichero): comprueba las correcciones de **F02.03** y **F02.04**, semáforo por variable, **techo del atajo** (modelo que solo ve metadatos) y **dos conjuntos de control**: emparejado por posición y 💤 de la misma sesión. Todo se decide con los datos | `conjuntos/` + `senales.csv` + `edfs.csv` | `medidas_fase_03.csv` + `conjuntos_control/` |
 
 ---
 
@@ -102,7 +102,7 @@
 
 - Ventanas de **4 s** (22 × 1.024 muestras).
 - Rechazo por amplitud **fijo de 1.000 µV**, común a 💤 interictal y ⏳ preictal (sin atajos de amplitud). Las crisis no se pierden por amplitud.
-- Se descartan las ventanas de los **primeros 10 s de cada fichero** (arranque del filtro), en todas las clases: solo las tenía 💤 interictal y la red las podía usar como pista (lo detectó `05`).
+- Se descartan las ventanas de los **primeros 10 s de cada fichero** (arranque del filtro), en todas las clases: solo las tenía 💤 interictal y la red las podía usar como pista (lo detectó **F02.05**).
 - ✏️ Ventanas por clase y descartadas: pendiente de la ejecución completa.
 
 <div align="center">
@@ -141,14 +141,14 @@
 ## ▶️ Cómo ejecutarla
 
 ```text
-1️⃣  01_seleccion_crisis.ipynb
-2️⃣  02_preprocesado.ipynb             (≈ 21 min, reanudable con progreso.csv)
-3️⃣  03_ventanas.ipynb
-4️⃣  04_particiones_y_balanceo.ipynb
-5️⃣  05_auditoria_atajos.ipynb         (unos minutos: bootstrap por paciente)
+1️⃣  F02.01  01_seleccion_crisis.ipynb
+2️⃣  F02.02  02_preprocesado.ipynb             (≈ 21 min, reanudable con progreso.csv)
+3️⃣  F02.03  03_ventanas.ipynb
+4️⃣  F02.04  04_particiones_y_balanceo.ipynb
+5️⃣  F02.05  05_auditoria_atajos.ipynb         (unos minutos: bootstrap por paciente)
 ```
 
-> 💡 Requiere haber ejecutado antes `fase_01/01_inventario_tusz.ipynb`.
+> 💡 Requiere haber ejecutado antes **F01.01**.
 
 ---
 

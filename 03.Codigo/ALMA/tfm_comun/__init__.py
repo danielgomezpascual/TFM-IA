@@ -7,6 +7,7 @@ entorno/      dónde están las cosas y con qué versiones
     rutas.py          -> dónde están el dataset y las salidas.
     versiones.py      -> versiones de Python y de las librerías de cada notebook.
     requisitos.py     -> qué librerías necesita cada notebook y si están instaladas (se comprueba al empezar).
+    dispositivo.py    -> dónde se hacen las cuentas de la red (GPU NVIDIA, GPU de Apple o procesador).
 
 dataset/      leer y entender TUSZ
     particiones.py    -> qué particiones tiene el dataset (train, dev, eval).
@@ -34,6 +35,13 @@ prediccion/   reglas para etiquetar y evaluar (aquí irán ventanas, modelos y m
     pliegues.py       -> reparto de pacientes en pliegues para la validación cruzada por paciente.
     atajos.py         -> pistas que no son EEG preictal (canales a 0, equipo, minuto del fichero...): medirlas y controlarlas.
     metricas.py       -> métricas de los modelos (AUROC con intervalo de confianza por paciente).
+    vistas.py         -> qué ventanas se usan para entrenar, validar, evaluar y en cada control (Fase 3).
+
+red/          PyTorch: cómo le llegan los datos a la red (aquí irán los modelos y el entrenamiento)
+    paquetes.py       -> las ventanas de un conjunto y una partición, leídas una vez y guardadas juntas (.npy).
+    datos.py          -> Dataset, preparación del lote (normalización al vuelo) y DataLoader.
+    aumento.py        -> aumento de datos al entrenar (reflejo izquierda <-> derecha del montaje TCP).
+    reproducibilidad.py -> semillas de Python, numpy y PyTorch.
 
 visual/       cómo se ven las cosas
     iconos.py         -> iconos de etiquetas, grupos, particiones, tipos de canal y regiones.

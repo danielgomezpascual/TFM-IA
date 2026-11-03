@@ -4,6 +4,7 @@
     "max_horas_interictal_por_paciente": 2,
     "max_ventanas_interictal_por_paciente": 1800,
     "ratio_entrenamiento": 1.0,
+    "equilibrado_exacto": true,
     "equilibrado": "por paciente, solo en el entrenamiento (train; train + dev en los grupos con validación cruzada)",
     "grupos_validacion_cruzada": [
         "ausencia"
@@ -17,5 +18,5 @@
         "pandas": "3.0.6",
         "matplotlib": "3.11.2"
     },
-    "fecha": "2026-10-30 16:14"
+    "fecha": "2026-11-03 12:44"
 }
