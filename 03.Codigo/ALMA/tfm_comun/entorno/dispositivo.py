@@ -15,7 +15,7 @@ import platform
 
 import torch
 
-from tfm_comun.entorno.requisitos import hay_gpu_nvidia
+from tfm_comun.entorno.gpu_nvidia import hay_gpu_nvidia
 
 
 def elegir_dispositivo():

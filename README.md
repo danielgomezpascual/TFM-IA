@@ -85,11 +85,13 @@ flowchart LR
 |---|:---:|---|
 | 🔍 **1 · Exploración** | 🟢 En curso | Inventario del corpus, EDA, elección del umbral de lead-in |
 | 🧹 **2 · Preprocesado** | ⏳ | Montaje TCP de 22 canales, remuestreo a 256 Hz, ventanas preictal/interictal, balanceo |
-| 🔮 **3 · Predicción** | ⏳ | Entrenar, ajustar y evaluar (sensibilidad, AUC-PR, falsas alarmas/hora) |
+| 🔮 **3 · Predicción** | ⏳ | Entrenar, ajustar y evaluar por ventanas (AUROC, AUC-PR) y en los controles de atajos. **Evaluación final en continuo**: cada EDF entero de 🟢 `eval`, con sensibilidad por crisis, falsas alarmas/hora y comparación con el azar |
 | 🏷️ **4 · Clasificación** | ⏳ | `fnsz`, `gnsz`, `cpsz`, `absz`, `tcsz` · F1 macro |
 | 💡 **5 · XAI** | ⏳ | SHAP / Grad-CAM sobre ambos modelos |
 | ✍️ **6 · Memoria** | ⏳ | Redacción completa |
 | 🎓 **7 · Defensa** | ⏳ | Revisión final y presentación |
+
+> 🎓 ¿Por qué se entrena **por paciente** y se evalúa **en continuo**? Explicado paso a paso en [README_por_paciente_y_continuo.md](README_por_paciente_y_continuo.md).
 
 ---
 

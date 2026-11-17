@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820" font-family="'Times New Roman', Times, 'Liberation Serif', 'Nimbus Roman', serif">
+  <defs>
+    <marker id="flecha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#141414"/>
+    </marker>
+    <g id="ok">
+      <circle cx="0" cy="0" r="9" fill="#9b1b1e"/>
+      <path d="M-4.5,0.5 L-1.2,3.8 L4.8,-3.6" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </defs>
+  <rect width="1400" height="820" fill="#ffffff"/>
+
+  <!-- Título -->
+  <text x="700" y="52" text-anchor="middle" font-size="32" letter-spacing="2" fill="#141414">LO QUE DEJA PREPARADO F03.01</text>
+  <text x="700" y="84" text-anchor="middle" font-size="18" font-style="italic" fill="#8a8a8a">de las listas de la Fase 2 a lotes que la red puede pedir, todo comprobado</text>
+
+  <!-- Cabeceras de columna -->
+  <g font-size="17" font-weight="bold" letter-spacing="1.5" fill="#141414">
+    <text x="40" y="132">LO QUE ENTRA</text>
+    <text x="360" y="132">LO QUE SE HA CONSEGUIDO</text>
+    <text x="1050" y="132">QUIÉN LO USA DESPUÉS</text>
+  </g>
+  <line x1="40" y1="142" x2="290" y2="142" stroke="#9b1b1e" stroke-width="2.5"/>
+  <line x1="360" y1="142" x2="980" y2="142" stroke="#9b1b1e" stroke-width="2.5"/>
+  <line x1="1050" y1="142" x2="1360" y2="142" stroke="#9b1b1e" stroke-width="2.5"/>
+
+  <!-- Columna izquierda: lo que entra -->
+  <g font-size="16" fill="#141414">
+    <rect x="40" y="170" width="250" height="110" fill="#f2f2f2" stroke="#141414" stroke-width="2"/>
+    <text x="58" y="200" font-size="19" font-weight="bold">F02.02 · la señal</text>
+    <text x="58" y="228">miles de ficheros .npy,</text>
+    <text x="58" y="250">en µV, sin normalizar</text>
+
+    <rect x="40" y="310" width="250" height="110" fill="#f2f2f2" stroke="#141414" stroke-width="2"/>
+    <text x="58" y="340" font-size="19" font-weight="bold">F02.04 · el conjunto</text>
+    <text x="58" y="368">general.csv: cada ventana</text>
+    <text x="58" y="390">con su partición y clase</text>
+
+    <rect x="40" y="450" width="250" height="110" fill="#f2f2f2" stroke="#141414" stroke-width="2"/>
+    <text x="58" y="480" font-size="19" font-weight="bold">F02.05 · los controles</text>
+    <text x="58" y="508">el examen final sin las</text>
+    <text x="58" y="530">pistas tramposas (H4, H5)</text>
+  </g>
+  <line x1="296" y1="365" x2="352" y2="365" stroke="#141414" stroke-width="2.5" marker-end="url(#flecha)"/>
+
+  <!-- Columna central: los cinco logros -->
+  <g font-size="16" fill="#141414">
+    <!-- 1 Vistas (importante) -->
+    <rect x="360" y="160" width="620" height="118" fill="#f7e8e8" stroke="#9b1b1e" stroke-width="2.5"/>
+    <circle cx="392" cy="192" r="20" fill="#141414"/><text x="392" y="199" text-anchor="middle" font-size="20" font-weight="bold" fill="#ffffff">1</text>
+    <text x="424" y="198" font-size="21" font-weight="bold">Vistas: cada ventana con su tarea  <tspan font-size="15" font-weight="normal" font-style="italic" fill="#8a8a8a">§3</tspan></text>
+    <text x="424" y="224">estudiar: 29.152 ventanas de 92 pacientes (282 crisis), mitad y mitad</text>
+    <text x="424" y="246">simulacro: 55.879 (37 pac.) · examen final: 46.021 (30 pac.) + 3 controles</text>
+    <use href="#ok" x="438" y="265"/><text x="454" y="270" font-size="15" font-style="italic">ningún paciente de estudio en un examen · etiquetas correctas · controles presentes</text>
+
+    <!-- 2 Paquetes -->
+    <rect x="360" y="292" width="620" height="84" fill="#ffffff" stroke="#141414" stroke-width="2"/>
+    <circle cx="392" cy="324" r="20" fill="#141414"/><text x="392" y="331" text-anchor="middle" font-size="20" font-weight="bold" fill="#ffffff">2</text>
+    <text x="424" y="330" font-size="21" font-weight="bold">Paquetes: un fichero por partición  <tspan font-size="15" font-weight="normal" font-style="italic" fill="#8a8a8a">§4-§5</tspan></text>
+    <use href="#ok" x="438" y="357"/><text x="454" y="362" font-size="15" font-style="italic">train.npy, dev.npy, eval.npy idénticos a la señal original, sin NaN</text>
+
+    <!-- 3 Normalización -->
+    <rect x="360" y="390" width="620" height="84" fill="#ffffff" stroke="#141414" stroke-width="2"/>
+    <circle cx="392" cy="422" r="20" fill="#141414"/><text x="392" y="429" text-anchor="middle" font-size="20" font-weight="bold" fill="#ffffff">3</text>
+    <text x="424" y="428" font-size="21" font-weight="bold">Misma escala: robusta, recorte ±20  <tspan font-size="15" font-weight="normal" font-style="italic" fill="#8a8a8a">§6</tspan></text>
+    <use href="#ok" x="438" y="455"/><text x="454" y="460" font-size="15" font-style="italic">un artefacto no aplasta la señal útil (el zscore sí) · el recorte toca pocas ventanas</text>
+
+    <!-- 4 Reflejo -->
+    <rect x="360" y="488" width="620" height="84" fill="#ffffff" stroke="#141414" stroke-width="2"/>
+    <circle cx="392" cy="520" r="20" fill="#141414"/><text x="392" y="527" text-anchor="middle" font-size="20" font-weight="bold" fill="#ffffff">4</text>
+    <text x="424" y="526" font-size="21" font-weight="bold">Reflejo izquierda ↔ derecha, solo al estudiar  <tspan font-size="15" font-weight="normal" font-style="italic" fill="#8a8a8a">§7</tspan></text>
+    <use href="#ok" x="438" y="553"/><text x="454" y="558" font-size="15" font-style="italic">al vuelo, a la mitad de las ventanas · reflejar dos veces = original</text>
+
+    <!-- 5 Lotes (importante) -->
+    <rect x="360" y="586" width="620" height="84" fill="#f7e8e8" stroke="#9b1b1e" stroke-width="2.5"/>
+    <circle cx="392" cy="618" r="20" fill="#141414"/><text x="392" y="625" text-anchor="middle" font-size="20" font-weight="bold" fill="#ffffff">5</text>
+    <text x="424" y="624" font-size="21" font-weight="bold">Lotes de 64, listos para la red  <tspan font-size="15" font-weight="normal" font-style="italic" fill="#8a8a8a">§8-§9</tspan></text>
+    <use href="#ok" x="438" y="651"/><text x="454" y="656" font-size="15" font-style="italic">(64, 22, 1.024) por lote · configuracion.json para repetirlo exactamente igual</text>
+  </g>
+  <!-- flechas entre pasos -->
+  <g stroke="#141414" stroke-width="2" marker-end="url(#flecha)">
+    <line x1="670" y1="279" x2="670" y2="290"/>
+    <line x1="670" y1="377" x2="670" y2="388"/>
+    <line x1="670" y1="475" x2="670" y2="486"/>
+    <line x1="670" y1="573" x2="670" y2="584"/>
+  </g>
+  <line x1="986" y1="415" x2="1042" y2="415" stroke="#141414" stroke-width="2.5" marker-end="url(#flecha)"/>
+
+  <!-- Columna derecha: quién lo usa -->
+  <g font-size="15.5" fill="#141414">
+    <rect x="1050" y="160" width="310" height="96" fill="#ffffff" stroke="#141414" stroke-width="2"/>
+    <text x="1066" y="188" font-size="19" font-weight="bold">F03.02 · línea base</text>
+    <text x="1066" y="214">modelos clásicos (sin red) con</text>
+    <text x="1066" y="236">las mismas vistas: ¿qué nota sin red?</text>
+
+    <rect x="1050" y="270" width="310" height="96" fill="#ffffff" stroke="#141414" stroke-width="2"/>
+    <text x="1066" y="298" font-size="19" font-weight="bold">F03.03 · contexto y paciente</text>
+    <text x="1066" y="324">qué le falta a una ventana suelta;</text>
+    <text x="1066" y="346">normalización por paciente</text>
+
+    <rect x="1050" y="380" width="310" height="96" fill="#f7e8e8" stroke="#9b1b1e" stroke-width="2.5"/>
+    <text x="1066" y="408" font-size="19" font-weight="bold">F03.04 · la red</text>
+    <text x="1066" y="434">lee configuracion.json, abre los</text>
+    <text x="1066" y="456">paquetes y pide lotes: solo entrena</text>
+
+    <rect x="1050" y="490" width="310" height="96" fill="#ffffff" stroke="#141414" stroke-width="2"/>
+    <text x="1066" y="518" font-size="19" font-weight="bold">F03.05-F03.08 · mejoras</text>
+    <text x="1066" y="544">Tang, preentreno, grafo: reutilizan</text>
+    <text x="1066" y="566">los mismos paquetes y vistas</text>
+
+    <rect x="1050" y="600" width="310" height="70" fill="#f2f2f2" stroke="#8a8a8a" stroke-width="2" stroke-dasharray="6 4"/>
+    <text x="1066" y="628" font-size="18" font-weight="bold">Al final de la fase</text>
+    <text x="1066" y="652">examen final + controles, una vez</text>
+  </g>
+
+  <!-- Resultado -->
+  <rect x="40" y="712" width="1320" height="62" fill="#141414"/>
+  <rect x="40" y="774" width="1320" height="5" fill="#9b1b1e"/>
+  <text x="700" y="750" text-anchor="middle" font-size="21" font-weight="bold" fill="#ffffff">RESULTADO: los datos están listos y comprobados. Desde aquí, cada notebook solo tiene que pedir lotes.</text>
+</svg>

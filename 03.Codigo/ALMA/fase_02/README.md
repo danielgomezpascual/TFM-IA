@@ -72,15 +72,17 @@
 
 ### 1. Crisis que sirven para predecir
 
-⭐ Umbral principal de lead-in: **4 min** (3 min de preictal + 1 min de SPH). Con el margen postictal descontado quedan:
+⭐ Umbral principal de lead-in: **3 min** (2 min de preictal + 1 min de SPH; antes 4 min, cambiado el 2026-11-06 para ganar pacientes). Con el margen postictal descontado quedan:
 
 | Partición | ⚡ Crisis | 👥 Pacientes |
 |---|---:|---:|
-| 🔵 `train` | 264 | 94 |
-| 🟡 `dev` | 133 | 28 |
-| 🟢 `eval` | 98 | 27 |
+| 🔵 `train` | 300 | 102 |
+| 🟡 `dev` | 156 | 31 |
+| 🟢 `eval` | 104 | 27 |
 
-- Los umbrales de 2, 10 y 15 min se comparan de forma **orientativa** sobre un **test común** (115 crisis, 28 pacientes de 🟢 eval).
+- **2 min** se estudia como comparación principal (conjunto `umbral_2min`: 364 crisis de 114 pacientes en train), con el mismo test común.
+
+- Los umbrales de 4, 5, 10 y 15 min se comparan de forma **orientativa** sobre un **test común** (115 crisis, 28 pacientes de 🟢 eval).
 - **Por tipo no da** (solo 🟥 `fnsz` (♦️) y 🟦 `gnsz` (🔷) tienen pacientes suficientes) → modelo **general** y, como experimento, uno por **grupo de inicio** (♦️ focal · 🔷 generalizada · 🔹 ausencia).
 - 🟩 `absz` (🔹): en 🟢 eval no se puede evaluar → **validación cruzada por paciente** en train + dev.
 

@@ -9,7 +9,7 @@
         10,
         15
     ],
-    "umbral_principal_min": 4,
+    "umbral_principal_min": 3,
     "sph_min": 1,
     "parametros_por_tipo": {
         "absz": {
@@ -21,58 +21,58 @@
         },
         "cpsz": {
             "margen postictal (s)": 300,
-            "umbral lead-in (s)": 240,
+            "umbral lead-in (s)": 180,
             "SPH (s)": 60,
-            "preictal máx. (s)": 180,
+            "preictal máx. (s)": 120,
             "grupo": "focal"
         },
         "fnsz": {
             "margen postictal (s)": 300,
-            "umbral lead-in (s)": 240,
+            "umbral lead-in (s)": 180,
             "SPH (s)": 60,
-            "preictal máx. (s)": 180,
+            "preictal máx. (s)": 120,
             "grupo": "focal"
         },
         "gnsz": {
             "margen postictal (s)": 300,
-            "umbral lead-in (s)": 240,
+            "umbral lead-in (s)": 180,
             "SPH (s)": 60,
-            "preictal máx. (s)": 180,
+            "preictal máx. (s)": 120,
             "grupo": "generalizada"
         },
         "mysz": {
             "margen postictal (s)": 300,
-            "umbral lead-in (s)": 240,
+            "umbral lead-in (s)": 180,
             "SPH (s)": 60,
-            "preictal máx. (s)": 180,
+            "preictal máx. (s)": 120,
             "grupo": "generalizada"
         },
         "sin_tipo": {
             "margen postictal (s)": 300,
-            "umbral lead-in (s)": 240,
+            "umbral lead-in (s)": 180,
             "SPH (s)": 60,
-            "preictal máx. (s)": 180,
+            "preictal máx. (s)": 120,
             "grupo": "—"
         },
         "spsz": {
             "margen postictal (s)": 300,
-            "umbral lead-in (s)": 240,
+            "umbral lead-in (s)": 180,
             "SPH (s)": 60,
-            "preictal máx. (s)": 180,
+            "preictal máx. (s)": 120,
             "grupo": "focal"
         },
         "tcsz": {
             "margen postictal (s)": 300,
-            "umbral lead-in (s)": 240,
+            "umbral lead-in (s)": 180,
             "SPH (s)": 60,
-            "preictal máx. (s)": 180,
+            "preictal máx. (s)": 120,
             "grupo": "generalizada"
         },
         "tnsz": {
             "margen postictal (s)": 300,
-            "umbral lead-in (s)": 240,
+            "umbral lead-in (s)": 180,
             "SPH (s)": 60,
-            "preictal máx. (s)": 180,
+            "preictal máx. (s)": 120,
             "grupo": "generalizada"
         }
     },
@@ -86,5 +86,5 @@
         "pandas": "3.0.6",
         "matplotlib": "3.11.2"
     },
-    "fecha": "2026-11-03 12:34"
+    "fecha": "2026-11-06 10:06"
 }

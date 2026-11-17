@@ -1,6 +1,6 @@
 === Selección de crisis y tramos (Fase 2 · 01) ===
-Inventario: 2026-10-28 16:06 · selección: 2026-11-03 12:34
-Umbrales que se comparan: [2, 3, 4, 5, 7, 10, 15] min · modelo general: 4 min con SPH de 1 min
+Inventario: 2026-11-03 16:31 · selección: 2026-11-06 10:06
+Umbrales que se comparan: [2, 3, 4, 5, 7, 10, 15] min · modelo general: 3 min con SPH de 1 min
 Interictal a más de 15 min antes de una crisis · tramo mínimo 60 s
 Crisis descartadas: 2 (anómalas o de menos de 2 s)
 Test común: 115 crisis de 🟢 eval de 28 pacientes
@@ -10,14 +10,14 @@ Tramos guardados en tramos.csv: 7.665
              margen postictal (s)  umbral lead-in (s)  SPH (s)  preictal máx. (s)           grupo
 tipo                                                                                             
 🟩 absz (🔹)                      0                  60       10                 50      🔹 ausencia
-🟧 cpsz (♦️)                   300                 240       60                180        ♦️ focal
-🟥 fnsz (♦️)                   300                 240       60                180        ♦️ focal
-🟦 gnsz (🔷)                    300                 240       60                180  🔷 generalizada
-🔳 mysz (🔷)                    300                 240       60                180  🔷 generalizada
-⬛ sin_tipo                    300                 240       60                180               —
-🟫 spsz (♦️)                   300                 240       60                180        ♦️ focal
-🟪 tcsz (🔷)                    300                 240       60                180  🔷 generalizada
-🟨 tnsz (🔷)                    300                 240       60                180  🔷 generalizada
+🟧 cpsz (♦️)                   300                 180       60                120        ♦️ focal
+🟥 fnsz (♦️)                   300                 180       60                120        ♦️ focal
+🟦 gnsz (🔷)                    300                 180       60                120  🔷 generalizada
+🔳 mysz (🔷)                    300                 180       60                120  🔷 generalizada
+⬛ sin_tipo                    300                 180       60                120               —
+🟫 spsz (♦️)                   300                 180       60                120        ♦️ focal
+🟪 tcsz (🔷)                    300                 180       60                120  🔷 generalizada
+🟨 tnsz (🔷)                    300                 180       60                120  🔷 generalizada
 
 --- Coste del margen postictal: crisis que superan cada umbral ---
 split                🔵 train                                                     🟡 dev                                                    🟢 eval                                                  
@@ -54,20 +54,20 @@ total            114  102  94  83  49  24  6    34  31  28  26  21  13  6     28
 --- Con los parámetros de cada tipo ---
                  parámetros                                         🔵 train            🟡 dev           🟢 eval            validación cruzada
                       grupo umbral (s) SPH (s) margen postictal (s)  crisis pacientes crisis pacientes crisis pacientes pacientes train+dev
-🟥 fnsz (♦️)        ♦️ focal        240      60                  300     162        57     88        17     43        14                  74
-🟦 gnsz (🔷)   🔷 generalizada        240      60                  300      57        23     37        15     19        10                  38
+🟥 fnsz (♦️)        ♦️ focal        180      60                  300     181        60    106        19     45        14                  79
+🟦 gnsz (🔷)   🔷 generalizada        180      60                  300      62        25     39        16     22        10                  41
+🟧 cpsz (♦️)        ♦️ focal        180      60                  300      30        16      2         1     28         3                  17
 🟩 absz (🔹)       🔹 ausencia         60      10                    0      30         8     22         4      2         1                  12
-🟧 cpsz (♦️)        ♦️ focal        240      60                  300      25        14      2         1     27         3                  15
-🟨 tnsz (🔷)   🔷 generalizada        240      60                  300       6         2      1         1      1         1                   3
-🟪 tcsz (🔷)   🔷 generalizada        240      60                  300       3         3      2         1      7         3                   4
-🟫 spsz (♦️)        ♦️ focal        240      60                  300       2         1      0         0      0         0                   1
-🔳 mysz (🔷)   🔷 generalizada        240      60                  300       0         0      0         0      0         0                   0
+🟨 tnsz (🔷)   🔷 generalizada        180      60                  300       6         2      1         1      1         1                   3
+🟪 tcsz (🔷)   🔷 generalizada        180      60                  300       3         3      2         1      7         3                   4
+🟫 spsz (♦️)        ♦️ focal        180      60                  300       2         1      0         0      0         0                   1
+🔳 mysz (🔷)   🔷 generalizada        180      60                  300       0         0      0         0      0         0                   0
 
 --- Por grupo de inicio (modelos de grupo de la Fase 3) ---
                                        🔵 train            🟡 dev           🟢 eval            validación cruzada
                                  tipos  crisis pacientes crisis pacientes crisis pacientes pacientes train+dev
-♦️ focal              cpsz, fnsz, spsz     189        70     90        18     70        16                  88
-🔷 generalizada  gnsz, mysz, tcsz, tnsz      66        28     40        15     27        12                  43
+♦️ focal              cpsz, fnsz, spsz     213        75    108        20     73        16                  95
+🔷 generalizada  gnsz, mysz, tcsz, tnsz      71        30     42        16     30        12                  46
 🔹 ausencia                        absz      30         8     22         4      2         1                  12
 
 --- Interictal por fuente ---

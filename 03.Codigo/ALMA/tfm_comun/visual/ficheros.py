@@ -63,11 +63,24 @@ def _tabla_txt(ruta, filas):
 
 
 def _tabla_npy(ruta, filas):
+    """Un .npy puede ser enorme: se enseña solo una esquina (las primeras filas y columnas), no todas las filas.
+
+    - 1 dimensión: los primeros valores.
+    - 2 dimensiones (filas × columnas): las `filas` primeras filas y sus `filas` primeras columnas.
+    - 3 o más (p. ej. ventanas × canales × muestras): la primera ventana, con la misma esquina.
+    """
     matriz = np.load(ruta, mmap_mode='r')
     forma = ' × '.join(numero_legible(n) for n in matriz.shape) + f' ({matriz.dtype})'
-    vista = np.asarray(matriz[..., :filas], dtype=np.float32).reshape(-1, min(filas, matriz.shape[-1]))
+    if matriz.ndim == 1:
+        vista = np.asarray(matriz[:filas], dtype=np.float32).reshape(-1, 1)
+        return forma, f'los {len(vista)} primeros valores', pd.DataFrame(vista, columns=['valor'])
+    plano = matriz if matriz.ndim == 2 else matriz[(0,) * (matriz.ndim - 2)]
+    vista = np.asarray(plano[:filas, :filas], dtype=np.float32)
     tabla = pd.DataFrame(vista, columns=[f'[{i}]' for i in range(vista.shape[1])])
-    return forma, f'los {vista.shape[1]} primeros valores de cada fila', tabla
+    donde = '' if matriz.ndim == 2 else 'de la primera ventana, '
+    que_se_ve = (f'{donde}las {vista.shape[0]} primeras filas y sus {vista.shape[1]} primeras columnas '
+                 f'(de {numero_legible(plano.shape[1])}), sin redondear')
+    return forma, que_se_ve, tabla
 
 
 _LECTORES = {'.csv': _tabla_csv, '.json': _tabla_json, '.txt': _tabla_txt, '.npy': _tabla_npy}

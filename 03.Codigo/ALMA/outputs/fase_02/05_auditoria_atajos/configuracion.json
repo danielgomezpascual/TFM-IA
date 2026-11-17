@@ -8,7 +8,7 @@
     "semilla": 42,
     "ventana_s": 4,
     "fs": 256.0,
-    "umbral_principal_min": 4,
+    "umbral_principal_min": 3,
     "modo_prueba": false,
     "versiones": {
         "Python": "3.14.0",
@@ -17,5 +17,5 @@
         "matplotlib": "3.11.2",
         "sklearn": "1.9.1"
     },
-    "fecha": "2026-11-03 12:45"
+    "fecha": "2026-11-06 10:22"
 }

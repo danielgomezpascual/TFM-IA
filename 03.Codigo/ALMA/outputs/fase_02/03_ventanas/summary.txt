@@ -1,5 +1,5 @@
 === Ventanas (Fase 2 · 03) ===
-Ventanas: 2026-11-03 12:37
+Ventanas: 2026-11-06 10:09
 Ventana de 4 s (1024 muestras) · solape: 💤 interictal 0%, ⏳ preictal 50%, ⚡ ictal 50%
 Tramos con señal: 7.665 · ventanas: 876.001 (820.854 se usan)
 Umbral de rechazo: 1.000 µV (valor fijo, común a 💤 interictal y ⏳ preictal, comprobado con las crisis de cada tipo), aplicado a interictal, preictal
@@ -8,14 +8,14 @@ Descarte del inicio del fichero: primeros 10 s de cada EDF, en todas las clases 
 --- Ventanas que se usarán, por partición ---
          💤 interictal  preictal (modelo general)  preictal (modelo de grupo)  ⚡ ictal  interictal por preictal (general)
 split                                                                                                                   
-🔵 train        313794                      21984                       21884    56320                               14.3
-🟡 dev          289251                      11190                       11432    12535                               25.8
-🟢 eval          59428                       8375                        8335    11368                                7.1
+🔵 train        313794                      16520                       16284    56320                               19.0
+🟡 dev          289251                       8598                        8756    12535                               33.6
+🟢 eval          59428                       5810                        5798    11368                               10.2
 
 --- Ventanas ⏳ preictales de cada modelo ---
 split                      🔵 train  🟡 dev  🟢 eval
 ventanas ⏳ preictales de…                        
-en_general                   23241  11708    8625
+en_general                   17410   9053    6034
 en_umbral_2min               10205   5526    3222
 en_umbral_3min               17410   9053    6034
 en_umbral_4min               23241  11708    8625
@@ -23,7 +23,7 @@ en_umbral_5min               21366  12984    9441
 en_umbral_7min               11749  10859    5518
 en_umbral_10min               6700   8577    1608
 en_umbral_15min               2508   7106     836
-en_modelo_grupo              23141  11953    8583
+en_modelo_grupo              17174   9214    6022
 en_test_comun                    0      0    3222
 
 --- Picos de las ventanas ⚡ ictales por tipo (µV) ---

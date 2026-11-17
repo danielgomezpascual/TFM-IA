@@ -66,6 +66,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\outputs\fase_03\01_datos_red\paquetes\general\dev_indice.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\outputs\fase_03\03_contexto_y_paciente\auc_por_grupo_y_contexto.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>

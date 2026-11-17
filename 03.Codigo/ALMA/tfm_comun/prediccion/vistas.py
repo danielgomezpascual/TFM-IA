@@ -11,14 +11,19 @@ F02.04 (`04_particiones_y_balanceo`) deja un conjunto por modelo (p. ej. conjunt
 para una cosa concreta:
 
     entrenamiento                   🔵 train con entrenamiento_equilibrado = True: lo que ve la red al aprender
-    validacion                      🟡 dev entero, con su desbalance real: elegir época, hiperparámetros y umbral
-    evaluacion                      🟢 eval entero, con su desbalance real: la nota final (se mira al final)
+    validacion                      🟡 dev entero, desbalanceado (más realista que 1:1, no el real): elegir época, hiperparámetros y umbral
+    evaluacion                      🟢 eval entero, desbalanceado (más realista que 1:1, no el real): la nota final (se mira al final)
     control_posicion                🟢 eval del control emparejado por posición (H4 de F02.05)
     control_misma_sesion            🟢 eval del control con 💤 de la misma sesión (H5 de F02.05)
     control_misma_sesion_estricta   el anterior, solo con 💤 de ficheros anteriores a la primera crisis
 
 En los conjuntos con validación cruzada por paciente (los que traen la columna `pliegue`, p. ej. grupo_ausencia)
 no hay validacion: hay validacion_cruzada (train + dev enteros, con su pliegue), y el entrenamiento es train + dev.
+
+Desbalance de validacion y evaluacion: más 💤 que ⏳, pero menos que en un EEG continuo (solo están las ventanas que
+cumplen los márgenes de F02.03). El real se mide con la evaluación en continuo, al final de la Fase 3.
+Como cada vista (y cada control) tiene una proporción distinta, se comparan con notas que no dependen de ella
+(AUC-ROC, sensibilidad, especificidad), no con precisión, F1 ni AUC-PR.
 """
 
 import pandas as pd
@@ -32,9 +37,9 @@ RUTA_CONTROLES = RUTA_OUTPUTS_FASE_02 / '05_auditoria_atajos' / 'conjuntos_contr
 # Qué es cada vista y para qué se usa (en este orden salen en todas las tablas)
 DESCRIPCION_VISTAS = {
     'entrenamiento': 'Entrenar la red (equilibrado: mitad y mitad en cada paciente)',
-    'validacion': 'Elegir época, hiperparámetros y umbral (desbalance real)',
+    'validacion': 'Elegir época, hiperparámetros y umbral (desbalanceado; no el real del EEG continuo)',
     'validacion_cruzada': 'Validación cruzada por paciente (train + dev enteros, con su pliegue)',
-    'evaluacion': 'Nota final (desbalance real). Solo se mira al final',
+    'evaluacion': 'Nota final (desbalanceado; no el real del EEG continuo). Solo se mira al final',
     'control_posicion': 'Control H4: 💤 de los mismos minutos del fichero que las ⏳',
     'control_misma_sesion': 'Control H5: 💤 de ficheros sin crisis de la misma sesión',
     'control_misma_sesion_estricta': 'Control H5 estricto: solo 💤 de ficheros anteriores a la 1.ª crisis',

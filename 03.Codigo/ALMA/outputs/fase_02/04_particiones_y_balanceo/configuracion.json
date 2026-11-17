@@ -11,12 +11,12 @@
     ],
     "n_pliegues": 4,
     "semilla": 42,
-    "umbral_principal_min": 4,
+    "umbral_principal_min": 3,
     "versiones": {
         "Python": "3.14.0",
         "numpy": "2.5.4",
         "pandas": "3.0.6",
         "matplotlib": "3.11.2"
     },
-    "fecha": "2026-11-03 12:44"
+    "fecha": "2026-11-06 10:16"
 }

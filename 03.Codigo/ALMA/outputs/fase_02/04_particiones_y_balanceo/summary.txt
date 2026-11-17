@@ -1,5 +1,5 @@
 === Particiones y balanceo (Fase 2 · 04) ===
-Particiones y balanceo: 2026-11-03 12:44
+Particiones y balanceo: 2026-11-06 10:16
 Máximo de 💤 interictal por paciente: 2 h (1.800 ventanas), en todas las particiones
 Entrenamiento equilibrado: 1 💤 interictales por cada ⏳ preictal, paciente a paciente (exacto: ningún paciente tira hacia una clase); dev y eval sin equilibrar
 Validación cruzada por paciente: ausencia en train + dev, 4 pliegues · semilla 42
@@ -22,7 +22,7 @@ split
 --- Conjuntos ---
                                                                qué es pacientes crisis ⏳ preictal 💤 interictal ⚡ ictal
 conjunto                                                                                                              
-general                           modelo general (de 4 a 1 min antes)       228    490      41549       238690       0
+general                           modelo general (de 4 a 1 min antes)       229    554      30928       238690       0
 umbral_2min              comparación de umbrales (de 2 a 1 min antes)       230    665      18012       238690       0
 umbral_3min              comparación de umbrales (de 3 a 1 min antes)       229    554      30928       238690       0
 umbral_4min              comparación de umbrales (de 4 a 1 min antes)       228    490      41549       238690       0
@@ -30,8 +30,8 @@ umbral_5min              comparación de umbrales (de 5 a 1 min antes)       227
 umbral_7min              comparación de umbrales (de 7 a 1 min antes)       223    158      27170       238690       0
 umbral_10min            comparación de umbrales (de 10 a 1 min antes)       222     63      16485       238690       0
 umbral_15min            comparación de umbrales (de 15 a 1 min antes)       219     25      10407       238690       0
-grupo_focal                                 modelo del grupo focal ♦️       103    344      29143       120862       0
-grupo_generalizada                    modelo del grupo generalizada 🔷        55    133      11262        72267       0
+grupo_focal                                 modelo del grupo focal ♦️       110    388      21624       126079       0
+grupo_generalizada                    modelo del grupo generalizada 🔷        58    143       7968        75223       0
 grupo_ausencia                            modelo del grupo ausencia 🔹        13     54       1246         5318       0
 test_comun             test común entre umbrales (de 2 a 1 min antes)        30    113       3080        40211       0
 clasificacion       clasificación de tipos (⚡ ictal, etiqueta = tipo)       236   2610          0            0   80223
@@ -39,9 +39,9 @@ clasificacion       clasificación de tipos (⚡ ictal, etiqueta = tipo)       2
 --- Conjuntos por partición ---
                             pacientes  crisis  ⏳ preictal  💤 interictal  💤 interictales por cada ⏳ preictal  ⏳ preictal equilibrado  💤 interictal equilibrado  peso ⏳ preictal (si se entrena con todo)
 conjunto           split                                                                                                                                                                               
-general            🔵 train      162.0   259.0     21984.0      151198.0                                6.88                 18417.0                   18417.0                                      3.94
-                   🟡 dev         36.0   133.0     11190.0       47281.0                                4.23                     NaN                       NaN                                       NaN
-                   🟢 eval        30.0    98.0      8375.0       40211.0                                4.80                     NaN                       NaN                                       NaN
+general            🔵 train      162.0   295.0     16520.0      151198.0                                9.15                 14576.0                   14576.0                                      5.08
+                   🟡 dev         37.0   156.0      8598.0       47281.0                                5.50                     NaN                       NaN                                       NaN
+                   🟢 eval        30.0   103.0      5810.0       40211.0                                6.92                     NaN                       NaN                                       NaN
 umbral_2min        🔵 train      163.0   356.0      9677.0      151198.0                               15.62                  9212.0                    9212.0                                      8.31
                    🟡 dev         37.0   196.0      5255.0       47281.0                                9.00                     NaN                       NaN                                       NaN
                    🟢 eval        30.0   113.0      3080.0       40211.0                               13.06                     NaN                       NaN                                       NaN
@@ -63,12 +63,12 @@ umbral_10min       🔵 train      156.0    25.0      6383.0      151198.0      
 umbral_15min       🔵 train      153.0     6.0      2499.0      151198.0                               60.50                  1479.0                    1479.0                                     30.75
                    🟡 dev         36.0    17.0      7072.0       47281.0                                6.69                     NaN                       NaN                                       NaN
                    🟢 eval        30.0     2.0       836.0       40211.0                               48.10                     NaN                       NaN                                       NaN
-grupo_focal        🔵 train       69.0   184.0     15412.0       69982.0                                4.54                 14147.0                   14147.0                                      2.77
-                   🟡 dev         18.0    90.0      7676.0       28450.0                                3.71                     NaN                       NaN                                       NaN
-                   🟢 eval        16.0    70.0      6055.0       22430.0                                3.70                     NaN                       NaN                                       NaN
-grupo_generalizada 🔵 train       28.0    66.0      5779.0       31116.0                                5.38                  5240.0                    5240.0                                      3.19
-                   🟡 dev         15.0    40.0      3249.0       24255.0                                7.47                     NaN                       NaN                                       NaN
-                   🟢 eval        12.0    27.0      2234.0       16896.0                                7.56                     NaN                       NaN                                       NaN
+grupo_focal        🔵 train       74.0   208.0     11510.0       73359.0                                6.37                 10980.0                   10980.0                                      3.69
+                   🟡 dev         20.0   108.0      6017.0       30290.0                                5.03                     NaN                       NaN                                       NaN
+                   🟢 eval        16.0    72.0      4097.0       22430.0                                5.47                     NaN                       NaN                                       NaN
+grupo_generalizada 🔵 train       30.0    71.0      4081.0       34072.0                                8.35                  3748.0                    3748.0                                      4.67
+                   🟡 dev         16.0    42.0      2232.0       24255.0                               10.87                     NaN                       NaN                                       NaN
+                   🟢 eval        12.0    30.0      1655.0       16896.0                               10.21                     NaN                       NaN                                       NaN
 grupo_ausencia     🔵 train        8.0    30.0       693.0        3261.0                                4.71                   693.0                     693.0                                      2.85
                    🟡 dev          4.0    22.0       507.0         936.0                                1.85                   338.0                     338.0                                      1.42
                    🟢 eval         1.0     2.0        46.0        1121.0                               24.37                     NaN                       NaN                                       NaN

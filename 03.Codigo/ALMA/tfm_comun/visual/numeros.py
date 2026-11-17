@@ -31,3 +31,21 @@ def duracion_legible(segundos):
     if abs(segundos) < 60:
         return f'{numero_legible(round(segundos))} s'
     return f'{numero_legible(round(segundos / 60, 1))} min'
+
+
+# ── Notas de los modelos (AUC, diferencias) en los textos de los notebooks ─────────────────────────────────────────
+# Antes cada notebook de la Fase 3 llevaba su copia de estas tres funciones; ahora están aquí, una sola vez.
+
+def decimal(valor, cifras=2):
+    """Un número con coma decimal y un número fijo de cifras, para los textos: 0.734 -> '0,73' · (0.0312, 3) -> '0,031'."""
+    return f'{valor:.{cifras}f}'.replace('.', ',')
+
+
+def con_intervalo(valor, inferior, superior, cifras=2):
+    """Una nota con su intervalo de confianza: (0.734, 0.68, 0.78) -> '0,73 [0,68 – 0,78]'."""
+    return f'{decimal(valor, cifras)} [{decimal(inferior, cifras)} – {decimal(superior, cifras)}]'
+
+
+def con_signo(valor, cifras=3):
+    """Una diferencia con su signo delante, para ver de un vistazo si sube o baja: 0.0312 -> '+0,031' · -0.02 -> '-0,020'."""
+    return ('+' if valor >= 0 else '') + decimal(valor, cifras)

@@ -1,19 +1,19 @@
-"""
-Aumento de datos: variaciones realistas de una ventana para que la red vea más ejemplos distintos al entrenar.
+"""Reflejo de hemisferios (Tang et al., en TUSZ): intercambiar los canales del lado izquierdo con los del derecho.
 
-Motivo para cambiar: que cambie qué aumentos se usan o cómo se hacen.
+Motivo para cambiar: que cambie el montaje o cómo se refleja.
 
 Imagen: fase_03/img/reflejo_hemisferios.png (el montaje TCP y su espejo izquierda <-> derecha)
 
-Reflejo de hemisferios (Tang et al. 2021, en TUSZ)
-==================================================
-Se intercambian los canales del lado izquierdo con los del derecho, como si la cabeza se mirara en un espejo.
-Una crisis que empieza en el lóbulo temporal izquierdo pasa a "empezar" en el derecho: sigue siendo una
-ventana preictal (o interictal) perfectamente creíble. Así la red no aprende "el lado" en vez del patrón.
+La idea
+=======
+Como si la cabeza se mirara en un espejo. Una crisis que empieza en el lóbulo temporal izquierdo pasa a "empezar"
+en el derecho: sigue siendo una ventana preictal (o interictal) perfectamente creíble. Así la red no aprende
+"el lado" en vez del patrón.
 
 En el montaje TCP no basta con cambiar unos canales por otros: los de la cadena central cruzan la cabeza
 (A1-T3 ... T4-A2) y al reflejarlos quedan al revés. El espejo de A1-T3 es A2-T4 = -(T4-A2): mismo canal,
 con el signo cambiado. espejo_tcp() lo calcula solo a partir del montaje (senal/montaje.py).
+En el espectro (red/lotes/secuencias_espectro.py) el signo no importa: solo se usa ORIGEN_ESPEJO.
 
 No se usa el escalado de amplitud (0,8-1,2) del mismo trabajo: con la normalización por ventana se anularía.
 """

@@ -100,7 +100,7 @@ def _numero_espanol(valor, decimales=2):
     Es el mismo formato que con_separadores(), para las tablas de mostrar_destacado()."""
     if pd.isna(valor):
         return valor
-    texto = f'{valor:,.0f}' if float(valor).is_integer() else f'{valor:,.{decimales}f}'.rstrip('0')
+    texto = f'{valor:,.0f}' if float(valor).is_integer() else f'{valor:,.{decimales}f}'.rstrip('0').rstrip('.')   # 0,996 -> '1' (no '1,')
     return texto.replace(',', '_').replace('.', ',').replace('_', '.')
 
 

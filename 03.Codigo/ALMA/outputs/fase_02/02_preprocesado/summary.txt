@@ -1,5 +1,5 @@
 === Preprocesado de la señal (Fase 2 · 02) ===
-Preprocesado: 2026-11-03 12:35
+Preprocesado: 2026-11-06 10:08
 Cadena: montaje TCP de 22 canales → µV → 256 Hz → paso banda 0,5–40 Hz (Butterworth orden 4, causal) → notch 60 Hz
 Formato: .npy por tramo, float16, µV, sin normalizar · 36,4 GB
 Tramos con señal: 7.665 de 7.665 · errores: 0 ficheros

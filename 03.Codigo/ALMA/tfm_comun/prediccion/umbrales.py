@@ -20,7 +20,7 @@ Imagen: tfm_comun/imagenes/umbrales_periodos.png (los periodos con los valores p
 
 # Valores por defecto (modelo general y tipos sin valores propios)
 MARGEN_POSTICTAL_POR_DEFECTO_S = 300   # 5 min
-UMBRAL_LEADIN_POR_DEFECTO_S = 240      # 4 min: 3 de preictal + 1 de SPH (elegido en fase_02/01_seleccion_crisis, sección 4.3)
+UMBRAL_LEADIN_POR_DEFECTO_S = 180      # 3 min: 2 de preictal + 1 de SPH (antes 4 min; cambiado el 2026-11-06 para ganar pacientes, ver fase_02/01_seleccion_crisis, sección 4.3)
 SPH_POR_DEFECTO_S = 60                 # 1 min
 
 # Tipos con valores propios
@@ -61,7 +61,7 @@ def umbral_leadin_s(tipo):
     Lead-in útil = tiempo sin crisis antes de esta, ya descontado el margen postictal de la anterior.
     Si no llega al umbral, no hay sitio para su preictal + SPH y la crisis no se usa para predecir
     (sí para clasificar su tipo). umbral = preictal máximo + SPH.
-    Ejemplos: 'fnsz' -> 240 (3 min de preictal + 1 de SPH) · 'absz' -> 60 (50 s + 10 s).
+    Ejemplos: 'fnsz' -> 180 (2 min de preictal + 1 de SPH) · 'absz' -> 60 (50 s + 10 s).
 
     Imagen: tfm_comun/imagenes/umbrales_periodos.png
     """

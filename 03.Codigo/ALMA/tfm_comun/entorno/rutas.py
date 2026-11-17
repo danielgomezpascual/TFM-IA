@@ -19,6 +19,7 @@ Estructura:
             fase_03\\                      <- RUTA_FASE_03: notebooks de la Fase 3
             outputs\\fase_03\\              <- RUTA_OUTPUTS_FASE_03: resultados de la Fase 3
                 01_datos_red\\paquetes\\    <- RUTA_PAQUETES: ventanas listas para la red (~GB, no subir a GitHub)
+                02_linea_base\\caracteristicas\\ <- RUTA_CARACTERISTICAS: 110 números por ventana (modelos clásicos)
             outputs\\comun\\modelos_cabeza\\ <- RUTA_MODELOS_CABEZA: modelos directos guardados (senal/fuentes.py)
 """
 
@@ -47,6 +48,9 @@ RUTA_OUTPUTS_FASE_03 = RUTA_OUTPUTS / 'fase_03'
 
 # Paquetes (01_datos_red): las ventanas de cada conjunto y partición, juntas en un .npy listo para la red
 RUTA_PAQUETES = RUTA_OUTPUTS_FASE_03 / '01_datos_red' / 'paquetes'
+
+# Características (02_linea_base): potencia relativa por banda y canal de cada ventana, para los modelos clásicos
+RUTA_CARACTERISTICAS = RUTA_OUTPUTS_FASE_03 / '02_linea_base' / 'caracteristicas'
 
 # Modelos directos de la localización de fuentes (uno por conjunto de electrodos, ~10 MB cada uno).
 # Se calculan la primera vez y se reutilizan en todos los notebooks (tfm_comun/senal/fuentes.py)

@@ -15,7 +15,7 @@ abrir miles de ficheros en cada época es lento. Un paquete las junta en UNA mat
     RUTA_PAQUETES/<conjunto>/<split>_indice.csv   una fila por ventana, en el mismo orden: id, paciente, clase,
                                                   etiqueta... y a qué vistas pertenece (en_entrenamiento, en_evaluacion...)
 
-Se guarda SIN normalizar (como en F02.02): la normalización se hace al vuelo, en cada lote (red/datos.py), para
+Se guarda SIN normalizar (como en F02.02): la normalización se hace al vuelo, en cada lote (red/ventanas/preparar_lote.py), para
 poder cambiarla sin rehacer los paquetes. El .npy se abre con mmap: no hace falta que quepa en la memoria.
 """
 
