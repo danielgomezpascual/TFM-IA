@@ -89,6 +89,44 @@ REQUISITOS_VISOR = {
 }
 
 
+# ---- Fase 1 y Fase 2 (añadidos al aplicar a sus notebooks las normas de F03.01-F03.02) ----
+_BASICAS = {
+    'pandas': ('pandas', 'tablas', True),
+    'matplotlib': ('matplotlib', 'figuras', True),
+}
+
+# F01.01 (inventario): solo tablas; la cabecera EDF se lee a mano, sin MNE
+REQUISITOS_FASE_01_INVENTARIO = dict(_BASICAS)
+
+# F01.02 (EDA)
+REQUISITOS_FASE_01_EDA = {'numpy': ('numpy', 'cálculo con matrices', True), **_BASICAS}
+
+# F01.03 (lanzador del F01.03v)
+REQUISITOS_FASE_01_LANZADOR = {
+    **_BASICAS,
+    'papermill': ('papermill', 'ejecutar el F01.03v una vez por tipo de crisis, con parámetros', True),
+}
+
+# F02.01 (selección de tramos) y F02.04 (particiones y balanceo): solo tablas, no se lee señal
+REQUISITOS_FASE_02_TABLAS = {'numpy': ('numpy', 'cálculo con matrices', True), **_BASICAS}
+
+# F02.02 (preprocesado): lee los EDF
+REQUISITOS_FASE_02_PREPROCESADO = {
+    'numpy': ('numpy', 'cálculo con matrices', True),
+    **_BASICAS,
+    'scipy': ('scipy', 'remuestreo, filtros y espectro (Welch)', True),
+    'mne': ('mne', 'leer los EDF', True),
+    'tqdm': ('tqdm', 'barra de progreso del bucle de ficheros', True),
+}
+
+# F02.03 (ventanas): lee los .npy de F02.02
+REQUISITOS_FASE_02_VENTANAS = {
+    'numpy': ('numpy', 'cálculo con matrices', True),
+    **_BASICAS,
+    'tqdm': ('tqdm', 'barra de progreso al cortar los tramos', True),
+}
+
+
 def comprobar_requisitos(requisitos, instalar_faltan=True):
     """Comprueba que están instaladas las librerías del notebook, instala las que falten y lo enseña en una tabla.
 
