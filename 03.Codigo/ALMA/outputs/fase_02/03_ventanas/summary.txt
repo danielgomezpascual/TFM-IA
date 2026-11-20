@@ -1,16 +1,17 @@
 === Ventanas (Fase 2 · 03) ===
-Ventanas: 2026-11-06 10:09
+Ventanas: 2026-11-19 15:12
 Ventana de 4 s (1024 muestras) · solape: 💤 interictal 0%, ⏳ preictal 50%, ⚡ ictal 50%
-Tramos con señal: 7.665 · ventanas: 876.001 (820.854 se usan)
+Tramos con señal: 7.665 · ventanas: 876.001 (777.700 se usan)
 Umbral de rechazo: 1.000 µV (valor fijo, común a 💤 interictal y ⏳ preictal, comprobado con las crisis de cada tipo), aplicado a interictal, preictal
 Descarte del inicio del fichero: primeros 10 s de cada EDF, en todas las clases (arranque del filtro)
+Márgenes entre tokens: se descartan las 💤 y ⏳ en los márgenes de una crisis de otro token de la sesión (46.521 ventanas). Tokens seguidos: tras una crisis al final del token, el siguiente empieza con crisis en el 43 % de los casos (base 2.1 %)
 
 --- Ventanas que se usarán, por partición ---
          💤 interictal  preictal (modelo general)  preictal (modelo de grupo)  ⚡ ictal  interictal por preictal (general)
 split                                                                                                                   
-🔵 train        313794                      16520                       16284    56320                               19.0
-🟡 dev          289251                       8598                        8756    12535                               33.6
-🟢 eval          59428                       5810                        5798    11368                               10.2
+🔵 train        291254                      15980                       15744    56320                               18.2
+🟡 dev          279091                       8041                        8199    12535                               34.7
+🟢 eval          53464                       5386                        5374    11368                                9.9
 
 --- Ventanas ⏳ preictales de cada modelo ---
 split                      🔵 train  🟡 dev  🟢 eval
@@ -39,17 +40,17 @@ tipo
 🔳 mysz (🔷)        2       644  363.200012    423.799988   2367.300049     6868.0        2.500000                       True
 
 --- Ventanas descartadas ---
-                      ventanas  descartadas por amplitud  descartadas por canales planos  descartadas por inicio del fichero  % descartadas
-split   clase                                                                                                                              
-🔵 train ⚡ ictal        57053.0                       0.0                             1.0                               732.0            1.3
-        💤 interictal  345787.0                   19599.0                          6823.0                              6378.0            9.3
-        ⏳ preictal     40358.0                    1658.0                           342.0                               185.0            5.2
-🟡 dev   ⚡ ictal        12665.0                       0.0                             0.0                               130.0            1.0
-        💤 interictal  303780.0                   10309.0                           233.0                              4257.0            4.8
-        ⏳ preictal     27096.0                    1024.0                            46.0                                67.0            4.2
-🟢 eval  ⚡ ictal        11428.0                       0.0                             0.0                                60.0            0.5
-        💤 interictal   63406.0                    2448.0                            74.0                              1536.0            6.3
-        ⏳ preictal     14428.0                     355.0                            32.0                                96.0            3.3
+                      ventanas  descartadas por amplitud  descartadas por canales planos  descartadas por inicio del fichero  descartadas por crisis en otro token  % descartadas
+split   clase                                                                                                                                                                    
+🔵 train ⚡ ictal        57053.0                       0.0                             1.0                               732.0                                   0.0            1.3
+        💤 interictal  345787.0                   19599.0                          6823.0                              6378.0                               24788.0           15.8
+        ⏳ preictal     40358.0                    1658.0                           342.0                               185.0                                2249.0            9.8
+🟡 dev   ⚡ ictal        12665.0                       0.0                             0.0                               130.0                                   0.0            1.0
+        💤 interictal  303780.0                   10309.0                           233.0                              4257.0                               10460.0            8.1
+        ⏳ preictal     27096.0                    1024.0                            46.0                                67.0                                1483.0            9.3
+🟢 eval  ⚡ ictal        11428.0                       0.0                             0.0                                60.0                                   0.0            0.5
+        💤 interictal   63406.0                    2448.0                            74.0                              1536.0                                6194.0           15.7
+        ⏳ preictal     14428.0                     355.0                            32.0                                96.0                                1347.0           12.0
 
 --- Crisis que se quedan sin ventanas ---
              crisis  duracion_mediana_s  crisis_con_ventanas  ventanas_por_crisis  % sin ventanas

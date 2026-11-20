@@ -1,4 +1,4 @@
 split,interictal,preictal (modelo general),preictal (modelo de grupo),ictal,interictal por preictal (general)
-train,313794,16520,16284,56320,19.0
-dev,289251,8598,8756,12535,33.6
-eval,59428,5810,5798,11368,10.2
+train,291254,15980,15744,56320,18.2
+dev,279091,8041,8199,12535,34.7
+eval,53464,5386,5374,11368,9.9

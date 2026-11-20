@@ -1,4 +1,6 @@
-00.TUSZ
+# Corpus: datos crudos de TUSZ y CHB-MIT (cientos de GB, solo lectura)
+00.Corpus/
+
 # Señal preprocesada de la Fase 2 (decenas de GB)
 03.Codigo/ALMA/outputs/**/senales/
 

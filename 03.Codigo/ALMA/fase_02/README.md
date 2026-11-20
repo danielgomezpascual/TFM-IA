@@ -62,7 +62,7 @@
 |---|---|---|---|---|
 | 1️⃣ | **F02.01** · `01_seleccion_crisis` | Limpia crisis, cuenta crisis y pacientes por **umbral de lead-in**, tipo y partición, y apunta los tramos ⏳ preictales, 💤 interictales y ⚡ ictales | `fase_01/01_inventario/` | `tramos.csv` |
 | 2️⃣ | **F02.02** · `02_preprocesado` | Montaje **TCP de 22 canales**, remuestreo a **256 Hz**, filtrado causal, µV y **float16**. Mide la calidad de cada tramo | `tramos.csv` + EDF | `senales/*.npy` + `senales.csv` |
-| 3️⃣ | **F02.03** · `03_ventanas` | Corta en ventanas de **4 s** (50 % de solape en ⏳ y ⚡), marca a qué modelo va cada una (`en_...`) y las de mala calidad o del **inicio del fichero** | `senales.csv` | `ventanas.csv` |
+| 3️⃣ | **F02.03** · `03_ventanas` | Corta en ventanas de **4 s** (50 % de solape en ⏳ y ⚡), marca a qué modelo va cada una (`en_...`) y las de mala calidad, del **inicio del fichero** o en los **márgenes de una crisis de otro token** de la sesión (los tokens consecutivos suelen ir seguidos) | `senales.csv` + `edfs.csv`/`crisis.csv` | `ventanas.csv` |
 | 4️⃣ | **F02.04** · `04_particiones_y_balanceo` | Comprueba particiones por paciente, limita 💤 interictal por paciente, arma un conjunto por modelo y **equilibra solo train**, exactamente mitad y mitad en cada paciente | `ventanas.csv` | `conjuntos/<modelo>.csv` |
 | 5️⃣ | **F02.05** · `05_auditoria_atajos` | Busca **atajos** (canales a 0, equipo, minuto del fichero, tipo de fichero): comprueba las correcciones de **F02.03** y **F02.04**, semáforo por variable, **techo del atajo** (modelo que solo ve metadatos) y **dos conjuntos de control**: emparejado por posición y 💤 de la misma sesión. Todo se decide con los datos | `conjuntos/` + `senales.csv` + `edfs.csv` | `medidas_fase_03.csv` + `conjuntos_control/` |
 
